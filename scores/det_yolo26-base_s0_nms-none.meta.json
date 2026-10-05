@@ -1,0 +1,23 @@
+{
+ "weights": "/home/ramsey5080/Norqobil/runs/fsc_v02/yolo26-base_s0/weights/best.pt",
+ "weights_sha256": "b4dd9d7edf515401524af23d40c392bfbc600bf005c1188c5453909e4d640230",
+ "ultralytics": "8.4.153",
+ "torch": "2.11.0+cu128",
+ "python": "3.12.4",
+ "nms": "none",
+ "imgsz": 640,
+ "conf": 0.001,
+ "iou": 0.7,
+ "max_det": 100,
+ "precision": "fp32",
+ "dataset": "/home/ramsey5080/Norqobil/lha-yolo26/datasets/FireSmoke-Clean_v0.2",
+ "manifest_sha256": "a05e06d5accdb68ca6db4e4d78feac3f760d3150eda3e6e97122e3ddfee5b6de",
+ "splits": [
+  "val",
+  "test",
+  "external"
+ ],
+ "limit": 0,
+ "runtime_end2end": false,
+ "head": "one-to-many + NMS"
+}

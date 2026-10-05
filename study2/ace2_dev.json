@@ -1,0 +1,1595 @@
+{
+ "study": "ace_ltt_study2_bladder",
+ "spec_version": "v2.3",
+ "status": "exploratory / method-development; NOT a confirmatory guarantee on fresh data",
+ "run_utc": "2026-09-24T04:29:21Z",
+ "registration": {
+  "utc": "2026-09-24T04:29:18Z",
+  "sha256": "09f0cee464a554b9307711c5b2fa2c68a5c5af426df82a3ef4679eaf305e1946"
+ },
+ "analysis_code_sha256": "a73364122806a9e4bfa230e2677b829d34c8385c444e58808ede20092b86a4a6",
+ "cover_id": "80cc3c33aeff4a15616f303cdf5c63e27262956ee36e41562ab2ab64b6924f2e",
+ "split": {
+  "n_dev_frames": 13937,
+  "n_dev_units": 5989,
+  "n_certify_frames": 11037,
+  "n_certify_units": 4192,
+  "n_select_units": 1797,
+  "select_fraction": 0.3,
+  "seed": 20260924
+ },
+ "thresholds": {
+  "crop": {
+   "t_low": 0.2012,
+   "t_high": 0.3601,
+   "A": 0.45,
+   "b_ladder": [
+    0.0,
+    0.05,
+    0.1,
+    0.15000000000000002,
+    0.2,
+    0.25,
+    0.30000000000000004,
+    0.35000000000000003,
+    0.4,
+    0.45
+   ],
+   "joint_slack": [
+    0.009238755059152389,
+    0.009238755059152389,
+    0.009238755059152389,
+    0.009238755059152389,
+    0.007074252894650225,
+    0.007074252894650225,
+    0.00490391649250789,
+    0.004898082254867722,
+    0.0038041626973363066,
+    -0.004865514435952692
+   ],
+   "slack_per_loss": [
+    {
+     "fire": 0.015535132044370233,
+     "smoke": 0.009238755059152389
+    },
+    {
+     "fire": 0.015535132044370233,
+     "smoke": 0.009238755059152389
+    },
+    {
+     "fire": 0.015535132044370233,
+     "smoke": 0.009238755059152389
+    },
+    {
+     "fire": 0.015535132044370233,
+     "smoke": 0.009238755059152389
+    },
+    {
+     "fire": 0.015535132044370233,
+     "smoke": 0.007074252894650225
+    },
+    {
+     "fire": 0.014865788001532213,
+     "smoke": 0.007074252894650225
+    },
+    {
+     "fire": 0.014531115980113203,
+     "smoke": 0.00490391649250789
+    },
+    {
+     "fire": 0.014531115980113203,
+     "smoke": 0.004898082254867722
+    },
+    {
+     "fire": 0.013527099915856176,
+     "smoke": 0.0038041626973363066
+    },
+    {
+     "fire": 0.007101397104611197,
+     "smoke": -0.004865514435952692
+    }
+   ],
+   "select_utility": 0.19679890560875457,
+   "select_risk_safe_endpoint": {
+    "fire": 0.020398259705488624,
+    "smoke": 0.026235837388128496
+   },
+   "grid": {
+    "s_edges": [
+     0.02,
+     0.0342,
+     0.0717,
+     0.1277,
+     0.2012,
+     0.2861,
+     0.3601,
+     0.428,
+     0.4802,
+     0.5205,
+     0.5617,
+     0.5933,
+     0.6236,
+     0.6526,
+     0.6823,
+     0.7101,
+     0.7381,
+     0.7604,
+     0.7847,
+     0.8022,
+     0.8174,
+     0.8354,
+     0.852,
+     0.8688,
+     0.89,
+     0.9,
+     Infinity
+    ],
+    "g_edges": [
+     0.0,
+     0.05,
+     0.1,
+     0.15000000000000002,
+     0.2,
+     0.25,
+     0.30000000000000004,
+     0.35000000000000003,
+     0.4,
+     0.45,
+     0.5,
+     0.55,
+     0.6000000000000001,
+     0.65,
+     0.7000000000000001,
+     0.75,
+     0.8,
+     0.8500000000000001,
+     0.9,
+     0.9500000000000001,
+     1.0,
+     Infinity
+    ]
+   },
+   "spanning": {
+    "status": "BOUNDARY_SPANNING",
+    "n": 10,
+    "max_joint_slack": 0.009238755059152389,
+    "min_joint_slack": -0.004865514435952692,
+    "safe_endpoint_feasible": true,
+    "reason": ""
+   }
+  },
+  "overlay": {
+   "t_low": 0.2012,
+   "t_high": 0.3601,
+   "A": 0.25,
+   "b_ladder": [
+    0.0,
+    0.05,
+    0.1,
+    0.15000000000000002,
+    0.2,
+    0.25
+   ],
+   "joint_slack": [
+    0.009238755059152389,
+    0.009238755059152389,
+    0.009221252346231886,
+    0.005962830624198303,
+    0.005956996386558135,
+    -0.0005481785822286922
+   ],
+   "slack_per_loss": [
+    {
+     "fire": 0.015535132044370233,
+     "smoke": 0.009238755059152389
+    },
+    {
+     "fire": 0.015200460022951223,
+     "smoke": 0.009238755059152389
+    },
+    {
+     "fire": 0.014531115980113207,
+     "smoke": 0.009221252346231886
+    },
+    {
+     "fire": 0.014531115980113207,
+     "smoke": 0.005962830624198303
+    },
+    {
+     "fire": 0.01252308385159915,
+     "smoke": 0.005956996386558135
+    },
+    {
+     "fire": 0.010515051723085093,
+     "smoke": -0.0005481785822286922
+    }
+   ],
+   "select_utility": 0.1881782159535842,
+   "select_risk_safe_endpoint": {
+    "fire": 0.020398259705488624,
+    "smoke": 0.026235837388128496
+   },
+   "grid": {
+    "s_edges": [
+     0.02,
+     0.0342,
+     0.0717,
+     0.1277,
+     0.2012,
+     0.2861,
+     0.3601,
+     0.428,
+     0.4802,
+     0.5205,
+     0.5617,
+     0.5933,
+     0.6236,
+     0.6526,
+     0.6823,
+     0.7101,
+     0.7381,
+     0.7604,
+     0.7847,
+     0.8022,
+     0.8174,
+     0.8354,
+     0.852,
+     0.8688,
+     0.89,
+     0.9,
+     Infinity
+    ],
+    "g_edges": [
+     0.0,
+     0.05,
+     0.1,
+     0.15000000000000002,
+     0.2,
+     0.25,
+     0.30000000000000004,
+     0.35000000000000003,
+     0.4,
+     0.45,
+     0.5,
+     0.55,
+     0.6000000000000001,
+     0.65,
+     0.7000000000000001,
+     0.75,
+     0.8,
+     0.8500000000000001,
+     0.9,
+     0.9500000000000001,
+     1.0,
+     Infinity
+    ]
+   },
+   "spanning": {
+    "status": "BOUNDARY_SPANNING",
+    "n": 6,
+    "max_joint_slack": 0.009238755059152389,
+    "min_joint_slack": -0.0005481785822286922,
+    "safe_endpoint_feasible": true,
+    "reason": ""
+   }
+  }
+ },
+ "select_bar_r_star": {
+  "fire": 0.03593339174985886,
+  "smoke": 0.035474592447280885
+ },
+ "certification": {
+  "certified": [
+   {
+    "acq": "crop",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.0,
+    "A": 0.45,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "crop|b=0"
+   },
+   {
+    "acq": "crop",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.05,
+    "A": 0.45,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "crop|b=0.05"
+   },
+   {
+    "acq": "crop",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.1,
+    "A": 0.45,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "crop|b=0.1"
+   },
+   {
+    "acq": "crop",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.15000000000000002,
+    "A": 0.45,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "crop|b=0.15"
+   },
+   {
+    "acq": "crop",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.2,
+    "A": 0.45,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "crop|b=0.2"
+   },
+   {
+    "acq": "crop",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.25,
+    "A": 0.45,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "crop|b=0.25"
+   },
+   {
+    "acq": "crop",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.30000000000000004,
+    "A": 0.45,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "crop|b=0.3"
+   },
+   {
+    "acq": "crop",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.35000000000000003,
+    "A": 0.45,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "crop|b=0.35"
+   },
+   {
+    "acq": "crop",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.4,
+    "A": 0.45,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "crop|b=0.4"
+   },
+   {
+    "acq": "crop",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.45,
+    "A": 0.45,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "crop|b=0.45"
+   },
+   {
+    "acq": "overlay",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.0,
+    "A": 0.25,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "overlay|b=0"
+   },
+   {
+    "acq": "overlay",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.05,
+    "A": 0.25,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "overlay|b=0.05"
+   },
+   {
+    "acq": "overlay",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.1,
+    "A": 0.25,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "overlay|b=0.1"
+   },
+   {
+    "acq": "overlay",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.15000000000000002,
+    "A": 0.25,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "overlay|b=0.15"
+   },
+   {
+    "acq": "overlay",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.2,
+    "A": 0.25,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "overlay|b=0.2"
+   },
+   {
+    "acq": "overlay",
+    "t_low": 0.2012,
+    "t_high": 0.3601,
+    "b": 0.25,
+    "A": 0.25,
+    "veto": {
+     "S": 0.4,
+     "rest": 0.0
+    },
+    "B0": Infinity,
+    "name": "overlay|b=0.25"
+   }
+  ],
+  "ok": true,
+  "partial": false,
+  "delta": 0.1,
+  "alpha": {
+   "fire": 0.05,
+   "smoke": 0.05
+  },
+  "reasons": [],
+  "delta_registration": "uniform",
+  "cover_id": "80cc3c33aeff4a15616f303cdf5c63e27262956ee36e41562ab2ab64b6924f2e",
+  "cover_algorithm": "dilworth_min_cover_kuhn/v1+greedy_above_400",
+  "losses": [
+   {
+    "name": "fire",
+    "alpha": 0.05,
+    "kind": "miss",
+    "catch_set": "response",
+    "aggregation": "unit_mean_over_events",
+    "weighting": "uniform",
+    "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)",
+    "empty_denominator": "exclude_unit",
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "name": "smoke",
+    "alpha": 0.05,
+    "kind": "miss",
+    "catch_set": "response",
+    "aggregation": "unit_mean_over_events",
+    "weighting": "uniform",
+    "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)",
+    "empty_denominator": "exclude_unit",
+    "antitone_under_alarm_inclusion": true
+   }
+  ],
+  "payload_semantics": {},
+  "chains": [
+   [
+    "crop|b=0",
+    "crop|b=0.05",
+    "crop|b=0.1",
+    "crop|b=0.15",
+    "crop|b=0.2",
+    "crop|b=0.25",
+    "crop|b=0.3",
+    "crop|b=0.35",
+    "crop|b=0.4",
+    "crop|b=0.45"
+   ],
+   [
+    "overlay|b=0",
+    "overlay|b=0.05",
+    "overlay|b=0.1",
+    "overlay|b=0.15",
+    "overlay|b=0.2",
+    "overlay|b=0.25"
+   ]
+  ],
+  "deltas": [
+   0.05,
+   0.05
+  ],
+  "pvalues": {
+   "crop|b=0": {
+    "p_joint": 6.6387730749176335e-09,
+    "per_loss": {
+     "fire": 6.6387730749176335e-09,
+     "smoke": 5.025333545993623e-10
+    },
+    "delta_m": 0.05
+   },
+   "crop|b=0.05": {
+    "p_joint": 6.6387730749176335e-09,
+    "per_loss": {
+     "fire": 6.6387730749176335e-09,
+     "smoke": 5.025333545993623e-10
+    },
+    "delta_m": 0.05
+   },
+   "crop|b=0.1": {
+    "p_joint": 6.6387730749176335e-09,
+    "per_loss": {
+     "fire": 6.6387730749176335e-09,
+     "smoke": 5.025333545993623e-10
+    },
+    "delta_m": 0.05
+   },
+   "crop|b=0.15": {
+    "p_joint": 6.6387730749176335e-09,
+    "per_loss": {
+     "fire": 6.6387730749176335e-09,
+     "smoke": 5.025333545993623e-10
+    },
+    "delta_m": 0.05
+   },
+   "crop|b=0.2": {
+    "p_joint": 6.6387730749176335e-09,
+    "per_loss": {
+     "fire": 6.6387730749176335e-09,
+     "smoke": 5.025333545993623e-10
+    },
+    "delta_m": 0.05
+   },
+   "crop|b=0.25": {
+    "p_joint": 1.9013449872576576e-08,
+    "per_loss": {
+     "fire": 1.9013449872576576e-08,
+     "smoke": 5.025333545993623e-10
+    },
+    "delta_m": 0.05
+   },
+   "crop|b=0.3": {
+    "p_joint": 1.5912290283517685e-07,
+    "per_loss": {
+     "fire": 1.5912290283517685e-07,
+     "smoke": 2.1037368437925675e-08
+    },
+    "delta_m": 0.05
+   },
+   "crop|b=0.35": {
+    "p_joint": 4.1838137780785326e-07,
+    "per_loss": {
+     "fire": 4.1838137780785326e-07,
+     "smoke": 6.480565658797049e-08
+    },
+    "delta_m": 0.05
+   },
+   "crop|b=0.4": {
+    "p_joint": 5.9255834932614365e-06,
+    "per_loss": {
+     "fire": 5.9255834932614365e-06,
+     "smoke": 1.382569872860882e-06
+    },
+    "delta_m": 0.05
+   },
+   "crop|b=0.45": {
+    "p_joint": 0.00012024157756510658,
+    "per_loss": {
+     "fire": 0.00012024157756510658,
+     "smoke": 8.386568036443389e-06
+    },
+    "delta_m": 0.05
+   },
+   "overlay|b=0": {
+    "p_joint": 6.6387730749176335e-09,
+    "per_loss": {
+     "fire": 6.6387730749176335e-09,
+     "smoke": 5.025333545993623e-10
+    },
+    "delta_m": 0.05
+   },
+   "overlay|b=0.05": {
+    "p_joint": 5.787540188503039e-08,
+    "per_loss": {
+     "fire": 5.787540188503039e-08,
+     "smoke": 5.025333545993623e-10
+    },
+    "delta_m": 0.05
+   },
+   "overlay|b=0.1": {
+    "p_joint": 5.787540188503039e-08,
+    "per_loss": {
+     "fire": 5.787540188503039e-08,
+     "smoke": 1.8594427636019797e-09
+    },
+    "delta_m": 0.05
+   },
+   "overlay|b=0.15": {
+    "p_joint": 1.0540194809217056e-06,
+    "per_loss": {
+     "fire": 1.0540194809217056e-06,
+     "smoke": 6.447939054569699e-09
+    },
+    "delta_m": 0.05
+   },
+   "overlay|b=0.2": {
+    "p_joint": 2.548772662346818e-06,
+    "per_loss": {
+     "fire": 2.548772662346818e-06,
+     "smoke": 6.447939054569699e-09
+    },
+    "delta_m": 0.05
+   },
+   "overlay|b=0.25": {
+    "p_joint": 5.9255834932614365e-06,
+    "per_loss": {
+     "fire": 5.9255834932614365e-06,
+     "smoke": 1.8907849690321807e-07
+    },
+    "delta_m": 0.05
+   }
+  },
+  "certificates": [
+   {
+    "ge": "crop|b=0",
+    "le": "crop|b=0.05",
+    "premises": [
+     "acq 'crop' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0 <= 0.05",
+     "A 0.45 <= 0.45",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "crop|b=0.05",
+    "le": "crop|b=0.1",
+    "premises": [
+     "acq 'crop' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0.05 <= 0.1",
+     "A 0.45 <= 0.45",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "crop|b=0.1",
+    "le": "crop|b=0.15",
+    "premises": [
+     "acq 'crop' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0.1 <= 0.15",
+     "A 0.45 <= 0.45",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "crop|b=0.15",
+    "le": "crop|b=0.2",
+    "premises": [
+     "acq 'crop' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0.15 <= 0.2",
+     "A 0.45 <= 0.45",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "crop|b=0.2",
+    "le": "crop|b=0.25",
+    "premises": [
+     "acq 'crop' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0.2 <= 0.25",
+     "A 0.45 <= 0.45",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "crop|b=0.25",
+    "le": "crop|b=0.3",
+    "premises": [
+     "acq 'crop' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0.25 <= 0.3",
+     "A 0.45 <= 0.45",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "crop|b=0.3",
+    "le": "crop|b=0.35",
+    "premises": [
+     "acq 'crop' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0.3 <= 0.35",
+     "A 0.45 <= 0.45",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "crop|b=0.35",
+    "le": "crop|b=0.4",
+    "premises": [
+     "acq 'crop' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0.35 <= 0.4",
+     "A 0.45 <= 0.45",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "crop|b=0.4",
+    "le": "crop|b=0.45",
+    "premises": [
+     "acq 'crop' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0.4 <= 0.45",
+     "A 0.45 <= 0.45",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "overlay|b=0",
+    "le": "overlay|b=0.05",
+    "premises": [
+     "acq 'overlay' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0 <= 0.05",
+     "A 0.25 <= 0.25",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "overlay|b=0.05",
+    "le": "overlay|b=0.1",
+    "premises": [
+     "acq 'overlay' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0.05 <= 0.1",
+     "A 0.25 <= 0.25",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "overlay|b=0.1",
+    "le": "overlay|b=0.15",
+    "premises": [
+     "acq 'overlay' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0.1 <= 0.15",
+     "A 0.25 <= 0.25",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "overlay|b=0.15",
+    "le": "overlay|b=0.2",
+    "premises": [
+     "acq 'overlay' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0.15 <= 0.2",
+     "A 0.25 <= 0.25",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   },
+   {
+    "ge": "overlay|b=0.2",
+    "le": "overlay|b=0.25",
+    "premises": [
+     "acq 'overlay' identical",
+     "(t_low, t_high) = (0.2012, 0.3601) identical",
+     "B0 = inf identical",
+     "b 0.2 <= 0.25",
+     "A 0.25 <= 0.25",
+     "veto S: 0.4 >= 0.4, rest: 0 >= 0"
+    ],
+    "alarm_inclusion": "forall x: alarm_p(x) superset-of-or-equal alarm_q(x)     [from A_p <= A_q]",
+    "response_inclusion": "forall x: response_p(x) superset-of-or-equal response_q(x)  [from b_p <= b_q]",
+    "payload": "C_U and Z_{B,U} identical on every unit (same a, same band, same B0)",
+    "losses": {
+     "fire": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     },
+     "smoke": {
+      "catch_set": "response",
+      "aggregation": "unit_mean_over_events",
+      "weighting": "uniform",
+      "empty_denominator": "exclude_unit",
+      "lemma": "ACE-LTT spec v2.3 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+     }
+    },
+    "antitone_under_alarm_inclusion": true
+   }
+  ],
+  "inadmissible": {},
+  "guarantee": "P[ for all pi in certified, for all k: R_k(pi) <= alpha_k ] >= 1 - delta, conditional on the admissibility contract C (chain certificates included), on split independence and on candidate-wise valid p-values."
+ },
+ "certify_risks": {
+  "crop|b=0": {
+   "fire": {
+    "risk": 0.016621792724774792,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.012996925890146706,
+    "n_units": 1043
+   }
+  },
+  "crop|b=0.05": {
+   "fire": {
+    "risk": 0.016621792724774792,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.012996925890146706,
+    "n_units": 1043
+   }
+  },
+  "crop|b=0.1": {
+   "fire": {
+    "risk": 0.016621792724774792,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.012996925890146706,
+    "n_units": 1043
+   }
+  },
+  "crop|b=0.15": {
+   "fire": {
+    "risk": 0.016621792724774792,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.013004301065307113,
+    "n_units": 1043
+   }
+  },
+  "crop|b=0.2": {
+   "fire": {
+    "risk": 0.016621792724774792,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.01300915646381406,
+    "n_units": 1043
+   }
+  },
+  "crop|b=0.25": {
+   "fire": {
+    "risk": 0.016684350452929975,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.013020219226554674,
+    "n_units": 1043
+   }
+  },
+  "crop|b=0.3": {
+   "fire": {
+    "risk": 0.01898938182018143,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.015914292590426697,
+    "n_units": 1043
+   }
+  },
+  "crop|b=0.35": {
+   "fire": {
+    "risk": 0.020034778798436306,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.01689819558775251,
+    "n_units": 1043
+   }
+  },
+  "crop|b=0.4": {
+   "fire": {
+    "risk": 0.022690744488876164,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.019778201487892638,
+    "n_units": 1043
+   }
+  },
+  "crop|b=0.45": {
+   "fire": {
+    "risk": 0.025637525132265027,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.021704944805517698,
+    "n_units": 1043
+   }
+  },
+  "overlay|b=0": {
+   "fire": {
+    "risk": 0.016621792724774792,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.012996925890146706,
+    "n_units": 1043
+   }
+  },
+  "overlay|b=0.05": {
+   "fire": {
+    "risk": 0.01759559737956104,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.012996925890146706,
+    "n_units": 1043
+   }
+  },
+  "overlay|b=0.1": {
+   "fire": {
+    "risk": 0.017866858068340624,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.014101663261018844,
+    "n_units": 1043
+   }
+  },
+  "overlay|b=0.15": {
+   "fire": {
+    "risk": 0.020381978385270238,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.015073321395370798,
+    "n_units": 1043
+   }
+  },
+  "overlay|b=0.2": {
+   "fire": {
+    "risk": 0.02131728791993508,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.015084427203880833,
+    "n_units": 1043
+   }
+  },
+  "overlay|b=0.25": {
+   "fire": {
+    "risk": 0.022207195558308974,
+    "n_units": 1141
+   },
+   "smoke": {
+    "risk": 0.01796443310402096,
+    "n_units": 1043
+   }
+  }
+ },
+ "operating_point": {
+  "policy": {
+   "acq": "overlay",
+   "t_low": 0.2012,
+   "t_high": 0.3601,
+   "b": 0.25,
+   "A": 0.25,
+   "veto": {
+    "S": 0.4,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "overlay|b=0.25"
+  },
+  "utility": 0.8090864058645102,
+  "n_certified": 16,
+  "partial": false,
+  "front": [
+   {
+    "policy": "overlay|b=0.25",
+    "utility": 0.8090864058645102
+   },
+   {
+    "policy": "overlay|b=0.2",
+    "utility": 0.8326435318951344
+   },
+   {
+    "policy": "crop|b=0.45",
+    "utility": 0.8399268067897223
+   },
+   {
+    "policy": "overlay|b=0.15",
+    "utility": 0.8580127445434991
+   },
+   {
+    "policy": "crop|b=0.4",
+    "utility": 0.8743564525267885
+   },
+   {
+    "policy": "overlay|b=0.1",
+    "utility": 0.8978786501337863
+   },
+   {
+    "policy": "crop|b=0.35",
+    "utility": 0.9051619250283741
+   },
+   {
+    "policy": "crop|b=0.3",
+    "utility": 0.9341553109122194
+   },
+   {
+    "policy": "crop|b=0.25",
+    "utility": 0.9903299960621695
+   },
+   {
+    "policy": "overlay|b=0.05",
+    "utility": 1.0174763669046478
+   },
+   {
+    "policy": "crop|b=0.2",
+    "utility": 1.0193233819460148
+   },
+   {
+    "policy": "crop|b=0.15",
+    "utility": 1.0283838150347164
+   },
+   {
+    "policy": "overlay|b=0",
+    "utility": 1.0301609732288302
+   },
+   {
+    "policy": "crop|b=0",
+    "utility": 1.0338200748879374
+   },
+   {
+    "policy": "crop|b=0.05",
+    "utility": 1.0338200748879374
+   },
+   {
+    "policy": "crop|b=0.1",
+    "utility": 1.0338200748879374
+   }
+  ],
+  "p_joint": 5.9255834932614365e-06,
+  "stats": {
+   "fa": 0.07375995887946543,
+   "calls": 0.07148681706985593,
+   "handoff": 0.0,
+   "miss_event": 0.028799735268882843,
+   "miss_unit": 0.028959548508222643
+  },
+  "caveat": "the operating point is chosen inside the certified set, which does not weaken the guarantee; but FA, calls and hand-off measured on the certify fold are selection-side quantities, not an unbiased performance estimate. With b < A the operator tier is non-empty, so hand-off load is priced by the utility."
+ },
+ "capacity": {
+  "design": {
+   "fire": {
+    "loss": "fire",
+    "value": 0.021636546184738956,
+    "source": "design",
+    "basis": "select fold of the dev split, at the frozen thresholds"
+   },
+   "smoke": {
+    "loss": "smoke",
+    "value": 0.029422789699070022,
+    "source": "design",
+    "basis": "select fold of the dev split, at the frozen thresholds"
+   }
+  },
+  "realized_DIAGNOSTIC_ONLY": {
+   "fire": {
+    "loss": "fire",
+    "value": 0.02840960551598635,
+    "source": "realized",
+    "basis": "certify fold of the dev split; diagnostic only"
+   },
+   "smoke": {
+    "loss": "smoke",
+    "value": 0.028620821707434636,
+    "source": "realized",
+    "basis": "certify fold of the dev split; diagnostic only"
+   }
+  },
+  "status_realized": {
+   "fire": {
+    "n_units": 1141,
+    "boundary": 0.03593339174985886,
+    "select_bar": 0.03593339174985886,
+    "required_margin": 0.0,
+    "capacity": 0.02840960551598635,
+    "source": "realized",
+    "basis": "certify fold of the dev split; diagnostic only",
+    "usable_for_registration": false,
+    "status": "MARGIN_CAPABLE"
+   },
+   "smoke": {
+    "n_units": 1043,
+    "boundary": 0.035474592447280885,
+    "select_bar": 0.035474592447280885,
+    "required_margin": 0.0,
+    "capacity": 0.028620821707434636,
+    "source": "realized",
+    "basis": "certify fold of the dev split; diagnostic only",
+    "usable_for_registration": false,
+    "status": "MARGIN_CAPABLE"
+   }
+  },
+  "margin": {
+   "fire": {
+    "r_star": 0.03593339174985886,
+    "g_star": 0.014066608250141145
+   },
+   "smoke": {
+    "r_star": 0.035474592447280885,
+    "g_star": 0.014525407552719118
+   }
+  },
+  "anchor_unreachable": {
+   "fire": {
+    "crop|b=0": false,
+    "overlay|b=0": false
+   },
+   "smoke": {
+    "crop|b=0": false,
+    "overlay|b=0": false
+   }
+  },
+  "note": "a capacity recomputed on the certify fold is DIAGNOSTIC ONLY and never accepts a family, changes a chain or changes an order"
+ },
+ "diagnostics": {
+  "stratum": {
+   "n_min_at_delta_m": 59,
+   "delta_m": 0.05,
+   "fire|S": {
+    "certify_units": 4,
+    "certifiable": false
+   },
+   "smoke|S": {
+    "certify_units": 13,
+    "certifiable": false
+   }
+  }
+ },
+ "selection_side_stats": {
+  "crop|b=0": {
+   "fa": 0.07684399897198664,
+   "calls": 0.07148681706985593,
+   "handoff": 0.009694663404910755,
+   "miss_event": 0.020853912287244585,
+   "miss_unit": 0.021012090036715916
+  },
+  "crop|b=0.05": {
+   "fa": 0.07684399897198664,
+   "calls": 0.07148681706985593,
+   "handoff": 0.009694663404910755,
+   "miss_event": 0.020853912287244585,
+   "miss_unit": 0.021012090036715916
+  },
+  "crop|b=0.1": {
+   "fa": 0.07684399897198664,
+   "calls": 0.07148681706985593,
+   "handoff": 0.009694663404910755,
+   "miss_event": 0.020853912287244585,
+   "miss_unit": 0.021012090036715916
+  },
+  "crop|b=0.15": {
+   "fa": 0.07684399897198664,
+   "calls": 0.07148681706985593,
+   "handoff": 0.009422850412249705,
+   "miss_event": 0.020859261597183605,
+   "miss_unit": 0.021017439346654933
+  },
+  "crop|b=0.2": {
+   "fa": 0.07684399897198664,
+   "calls": 0.07148681706985593,
+   "handoff": 0.008969828757814623,
+   "miss_event": 0.020862783280523482,
+   "miss_unit": 0.02102096102999481
+  },
+  "crop|b=0.25": {
+   "fa": 0.07684399897198664,
+   "calls": 0.07148681706985593,
+   "handoff": 0.007520159463622361,
+   "miss_event": 0.020920444497048885,
+   "miss_unit": 0.021078949344493905
+  },
+  "crop|b=0.3": {
+   "fa": 0.07684399897198664,
+   "calls": 0.07148681706985593,
+   "handoff": 0.004711425206124852,
+   "miss_event": 0.02414022251515313,
+   "miss_unit": 0.024298727362598152
+  },
+  "crop|b=0.35": {
+   "fa": 0.07684399897198664,
+   "calls": 0.07148681706985593,
+   "handoff": 0.0032617559119325905,
+   "miss_event": 0.02497505579740704,
+   "miss_unit": 0.025133560644852063
+  },
+  "crop|b=0.4": {
+   "fa": 0.07684399897198664,
+   "calls": 0.07148681706985593,
+   "handoff": 0.0017214822868533116,
+   "miss_event": 0.028475961921633767,
+   "miss_unit": 0.028634466769078788
+  },
+  "crop|b=0.45": {
+   "fa": 0.07684399897198664,
+   "calls": 0.07148681706985593,
+   "handoff": 0.0,
+   "miss_event": 0.0322116156034068,
+   "miss_unit": 0.032370447548825516
+  },
+  "overlay|b=0": {
+   "fa": 0.07375995887946543,
+   "calls": 0.07148681706985593,
+   "handoff": 0.011053728368216,
+   "miss_event": 0.020853912287244585,
+   "miss_unit": 0.021012090036715916
+  },
+  "overlay|b=0.05": {
+   "fa": 0.07375995887946543,
+   "calls": 0.07148681706985593,
+   "handoff": 0.010419498052006886,
+   "miss_event": 0.021626590389547166,
+   "miss_unit": 0.02178509523699219
+  },
+  "overlay|b=0.1": {
+   "fa": 0.07375995887946543,
+   "calls": 0.07148681706985593,
+   "handoff": 0.004439612213463804,
+   "miss_event": 0.022554130998567345,
+   "miss_unit": 0.022713290041959756
+  },
+  "overlay|b=0.15": {
+   "fa": 0.07375995887946543,
+   "calls": 0.07148681706985593,
+   "handoff": 0.002446316933949443,
+   "miss_event": 0.02525454248378694,
+   "miss_unit": 0.025413701527179353
+  },
+  "overlay|b=0.2": {
+   "fa": 0.07375995887946543,
+   "calls": 0.07148681706985593,
+   "handoff": 0.001177856301531213,
+   "miss_event": 0.02600472082574601,
+   "miss_unit": 0.026164534065085808
+  },
+  "overlay|b=0.25": {
+   "fa": 0.07375995887946543,
+   "calls": 0.07148681706985593,
+   "handoff": 0.0,
+   "miss_event": 0.028799735268882843,
+   "miss_unit": 0.028959548508222643
+  }
+ }
+}

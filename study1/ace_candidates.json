@@ -1,0 +1,313 @@
+{
+ "written_utc": "2026-09-23T10:32:00Z",
+ "cover_id": "030f725011a36785cdca2b69b755d6b25248a024e0f45d6bbc631038bdc5c0e6",
+ "thresholds": {
+  "crop": {
+   "theta": [
+    0.117,
+    0.3816,
+    0.65,
+    0.65
+   ],
+   "select_objective": 0.15109351279674138,
+   "select_risk_max": 0.0492986338657197,
+   "grid": {
+    "s_edges": [
+     0.02,
+     0.117,
+     0.3816,
+     0.4864,
+     0.5562,
+     0.6133,
+     0.6603,
+     0.6971,
+     0.7293,
+     0.7566,
+     0.7823,
+     0.8075,
+     0.8221,
+     0.8361,
+     0.8491,
+     0.8613,
+     0.8725,
+     0.8811,
+     0.8889,
+     0.8949,
+     0.9,
+     0.9009,
+     0.9061,
+     0.9114,
+     0.9161,
+     0.9224,
+     Infinity
+    ],
+    "g_edges": [
+     0.0,
+     0.05,
+     0.1,
+     0.15000000000000002,
+     0.2,
+     0.25,
+     0.30000000000000004,
+     0.35000000000000003,
+     0.4,
+     0.45,
+     0.5,
+     0.55,
+     0.6000000000000001,
+     0.65,
+     0.7000000000000001,
+     0.75,
+     0.8,
+     0.8500000000000001,
+     0.9,
+     0.9500000000000001,
+     1.0,
+     Infinity
+    ]
+   }
+  },
+  "overlay": {
+   "theta": [
+    0.117,
+    0.3816,
+    0.5,
+    0.5
+   ],
+   "select_objective": 0.12296411757873948,
+   "select_risk_max": 0.04343008926478072,
+   "grid": {
+    "s_edges": [
+     0.02,
+     0.117,
+     0.3816,
+     0.4864,
+     0.5562,
+     0.6133,
+     0.6603,
+     0.6971,
+     0.7293,
+     0.7566,
+     0.7823,
+     0.8075,
+     0.8221,
+     0.8361,
+     0.8491,
+     0.8613,
+     0.8725,
+     0.8811,
+     0.8889,
+     0.8949,
+     0.9,
+     0.9009,
+     0.9061,
+     0.9114,
+     0.9161,
+     0.9224,
+     Infinity
+    ],
+    "g_edges": [
+     0.0,
+     0.05,
+     0.1,
+     0.15000000000000002,
+     0.2,
+     0.25,
+     0.30000000000000004,
+     0.35000000000000003,
+     0.4,
+     0.45,
+     0.5,
+     0.55,
+     0.6000000000000001,
+     0.65,
+     0.7000000000000001,
+     0.75,
+     0.8,
+     0.8500000000000001,
+     0.9,
+     0.9500000000000001,
+     1.0,
+     Infinity
+    ]
+   }
+  }
+ },
+ "chains": [
+  [
+   "crop|lambda=1",
+   "crop|lambda=0.8",
+   "crop|lambda=0.6",
+   "crop|lambda=0.4",
+   "crop|lambda=0.2",
+   "crop|lambda=0"
+  ],
+  [
+   "overlay|lambda=1",
+   "overlay|lambda=0.8",
+   "overlay|lambda=0.6",
+   "overlay|lambda=0.4",
+   "overlay|lambda=0.2",
+   "overlay|lambda=0"
+  ]
+ ],
+ "policies": [
+  {
+   "acq": "crop",
+   "t_low": 0.117,
+   "t_high": 0.3816,
+   "b": 0.65,
+   "A": 0.65,
+   "veto": {
+    "S": 1.0,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "crop|lambda=1"
+  },
+  {
+   "acq": "crop",
+   "t_low": 0.117,
+   "t_high": 0.3816,
+   "b": 0.65,
+   "A": 0.65,
+   "veto": {
+    "S": 0.8,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "crop|lambda=0.8"
+  },
+  {
+   "acq": "crop",
+   "t_low": 0.117,
+   "t_high": 0.3816,
+   "b": 0.65,
+   "A": 0.65,
+   "veto": {
+    "S": 0.6,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "crop|lambda=0.6"
+  },
+  {
+   "acq": "crop",
+   "t_low": 0.117,
+   "t_high": 0.3816,
+   "b": 0.65,
+   "A": 0.65,
+   "veto": {
+    "S": 0.4,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "crop|lambda=0.4"
+  },
+  {
+   "acq": "crop",
+   "t_low": 0.117,
+   "t_high": 0.3816,
+   "b": 0.65,
+   "A": 0.65,
+   "veto": {
+    "S": 0.2,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "crop|lambda=0.2"
+  },
+  {
+   "acq": "crop",
+   "t_low": 0.117,
+   "t_high": 0.3816,
+   "b": 0.65,
+   "A": 0.65,
+   "veto": {
+    "S": 0.0,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "crop|lambda=0"
+  },
+  {
+   "acq": "overlay",
+   "t_low": 0.117,
+   "t_high": 0.3816,
+   "b": 0.5,
+   "A": 0.5,
+   "veto": {
+    "S": 1.0,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "overlay|lambda=1"
+  },
+  {
+   "acq": "overlay",
+   "t_low": 0.117,
+   "t_high": 0.3816,
+   "b": 0.5,
+   "A": 0.5,
+   "veto": {
+    "S": 0.8,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "overlay|lambda=0.8"
+  },
+  {
+   "acq": "overlay",
+   "t_low": 0.117,
+   "t_high": 0.3816,
+   "b": 0.5,
+   "A": 0.5,
+   "veto": {
+    "S": 0.6,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "overlay|lambda=0.6"
+  },
+  {
+   "acq": "overlay",
+   "t_low": 0.117,
+   "t_high": 0.3816,
+   "b": 0.5,
+   "A": 0.5,
+   "veto": {
+    "S": 0.4,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "overlay|lambda=0.4"
+  },
+  {
+   "acq": "overlay",
+   "t_low": 0.117,
+   "t_high": 0.3816,
+   "b": 0.5,
+   "A": 0.5,
+   "veto": {
+    "S": 0.2,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "overlay|lambda=0.2"
+  },
+  {
+   "acq": "overlay",
+   "t_low": 0.117,
+   "t_high": 0.3816,
+   "b": 0.5,
+   "A": 0.5,
+   "veto": {
+    "S": 0.0,
+    "rest": 0.0
+   },
+   "B0": Infinity,
+   "name": "overlay|lambda=0"
+  }
+ ],
+ "note": "written BEFORE any certify-fold quantity is computed (clause C5)"
+}

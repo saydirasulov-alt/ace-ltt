@@ -1,0 +1,181 @@
+{
+ "study": "ace_ltt_study3_p45_stress",
+ "receipt": "AUDIT",
+ "spec_version": "v2.4.3",
+ "created_utc": "2026-09-28T02:49:22Z",
+ "verifies_registration": {
+  "utc": "2026-09-28T02:09:58Z",
+  "sha256": "d9bcf680f1374d8124fe7549147538af3722683feda6e72f8821dee8da0c6b42"
+ },
+ "audit_metadata": {
+  "Z_k": "exclude_unit: the audited unit set per loss, label-derived",
+  "membership": {
+   "fire": {
+    "n_units": 1130,
+    "sha256": "02c363b2e9a99b8227740ed2901f9b4f80319750dfa7ada43ea017ef595544ed"
+   },
+   "smoke": {
+    "n_units": 1114,
+    "sha256": "8a10f4194f73b7de0a1d9f2f044935a51303f957cc4668ec0730d64b434e5184"
+   }
+  },
+  "split": {
+   "n_certify_frames": 12349,
+   "n_certify_units": 4231,
+   "n_select_units": 1814,
+   "n_calibration_units": 6045
+  },
+  "candidate_independent": true
+ },
+ "formal_C3": {
+  "verdict": "PASS",
+  "n_cert": {
+   "fire": 1130,
+   "smoke": 1114
+  },
+  "n_min_required": {
+   "fire": 72,
+   "smoke": 72
+  },
+  "branch": {
+   "modes": [
+    "crop",
+    "overlay"
+   ],
+   "M": 4,
+   "delta_m": 0.025,
+   "n_min": 72
+  },
+  "bars": {
+   "checklist_select_bar_r_star_ref": {
+    "fire": 0.034270650148391715,
+    "smoke": 0.033994334191083914
+   },
+   "checklist_counts_n_cert": {
+    "fire": 1130,
+    "smoke": 1114
+   },
+   "r_star_cert": {
+    "fire": 0.0345132738351822,
+    "smoke": 0.0341113105416298
+   },
+   "h_star_C3": {
+    "fire": 0.0,
+    "smoke": 0.0
+   },
+   "note": "h*_C3 = max(0, r*_ref - r*_cert): positive only when the realized support is worse than the design reference count assumed, and then A may REFUSE. CAPABLE, the R1 statuses and R2 are never recomputed here.",
+   "capacity_minimum_scope": "within one arm; never over the union of the arms"
+  },
+  "checklist_items": [
+   "loss_by_loss_monotonicity",
+   "deterministic_chain_cover",
+   "predeclared_delta_plan",
+   "policy_independent_audit_membership",
+   "fixed_payload_semantics",
+   "weights_hash_populated",
+   "chain_margin_capacity",
+   "chain_boundary_spanning",
+   "inference_contract_executable"
+  ],
+  "checklist_realized": {
+   "B": [
+    {
+     "item": "loss_by_loss_monotonicity",
+     "ok": true,
+     "detail": "fire: catch_set=response, agg=unit_mean_over_events, w=uniform, empty=exclude_unit, lemma=ACE-LTT spec v2.4 Sec. 4.3 Lemma, event-miss instance (2026-09-24); smoke: catch_set=response, agg=unit_mean_over_events, w=uniform, empty=exclude_unit, lemma=ACE-LTT spec v2.4 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+    },
+    {
+     "item": "deterministic_chain_cover",
+     "ok": true,
+     "detail": "dilworth_min_cover_kuhn/v1+greedy_above_400: M=2, permutation-invariant=True, id=cdae0eb78084eb21"
+    },
+    {
+     "item": "predeclared_delta_plan",
+     "ok": true,
+     "detail": "uniform: M=2, delta_m = delta/M (delta=0.10 -> 0.0500)"
+    },
+    {
+     "item": "policy_independent_audit_membership",
+     "ok": true,
+     "detail": "count and membership identical across the whole family"
+    },
+    {
+     "item": "fixed_payload_semantics",
+     "ok": true,
+     "detail": "no payload risk in the constrained family"
+    },
+    {
+     "item": "weights_hash_populated",
+     "ok": true,
+     "detail": "detector.weights_sha256 = b4dd9d7edf515401..."
+    },
+    {
+     "item": "chain_margin_capacity",
+     "ok": true,
+     "detail": "fire: n=1130, r*=0.0345, bar=0.0343, h*=0.0000, Gamma=0.0554 [design] -> MARGIN_CAPABLE; smoke: n=1114, r*=0.0341, bar=0.0340, h*=0.0000, Gamma=0.0684 [design] -> MARGIN_CAPABLE"
+    },
+    {
+     "item": "chain_boundary_spanning",
+     "ok": true,
+     "detail": "crop: BOUNDARY_SPANNING (max +0.0186, min -0.0256, safe endpoint feasible=True); overlay: BOUNDARY_SPANNING (max +0.0186, min -0.0267, safe endpoint feasible=True)"
+    },
+    {
+     "item": "inference_contract_executable",
+     "ok": true,
+     "detail": "registration=ace_ltt_study3_p45_stress, registry_id=58852db0d59492ce..., fire -> hb_unweighted_unit_mean [v1, w=uniform, chain_compatible=True]; smoke -> hb_unweighted_unit_mean [v1, w=uniform, chain_compatible=True]"
+    }
+   ],
+   "L": [
+    {
+     "item": "loss_by_loss_monotonicity",
+     "ok": true,
+     "detail": "fire: catch_set=response, agg=unit_mean_over_events, w=uniform, empty=exclude_unit, lemma=ACE-LTT spec v2.4 Sec. 4.3 Lemma, event-miss instance (2026-09-24); smoke: catch_set=response, agg=unit_mean_over_events, w=uniform, empty=exclude_unit, lemma=ACE-LTT spec v2.4 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+    },
+    {
+     "item": "deterministic_chain_cover",
+     "ok": true,
+     "detail": "dilworth_min_cover_kuhn/v1+greedy_above_400: M=2, permutation-invariant=True, id=3f4a679978493de6"
+    },
+    {
+     "item": "predeclared_delta_plan",
+     "ok": true,
+     "detail": "uniform: M=2, delta_m = delta/M (delta=0.10 -> 0.0500)"
+    },
+    {
+     "item": "policy_independent_audit_membership",
+     "ok": true,
+     "detail": "count and membership identical across the whole family"
+    },
+    {
+     "item": "fixed_payload_semantics",
+     "ok": true,
+     "detail": "no payload risk in the constrained family"
+    },
+    {
+     "item": "weights_hash_populated",
+     "ok": true,
+     "detail": "detector.weights_sha256 = b4dd9d7edf515401..."
+    },
+    {
+     "item": "chain_margin_capacity",
+     "ok": true,
+     "detail": "fire: n=1130, r*=0.0345, bar=0.0343, h*=0.0000, Gamma=0.0021 [design] -> MARGIN_CAPABLE; smoke: n=1114, r*=0.0341, bar=0.0340, h*=0.0000, Gamma=0.0177 [design] -> MARGIN_CAPABLE"
+    },
+    {
+     "item": "chain_boundary_spanning",
+     "ok": true,
+     "detail": "crop: BOUNDARY_SPANNING (max +0.0186, min -0.0256, safe endpoint feasible=True); overlay: BOUNDARY_SPANNING (max +0.0186, min -0.0267, safe endpoint feasible=True)"
+    },
+    {
+     "item": "inference_contract_executable",
+     "ok": true,
+     "detail": "registration=ace_ltt_study3_p45_stress, registry_id=58852db0d59492ce..., fire -> hb_unweighted_unit_mean [v1, w=uniform, chain_compatible=True]; smoke -> hb_unweighted_unit_mean [v1, w=uniform, chain_compatible=True]"
+    }
+   ]
+  },
+  "problems": [],
+  "powers": "verify or refuse only; A may not alter the family, cover, order, shares or branch"
+ },
+ "powers": "these values may only verify the already frozen procedure or refuse it; they cannot alter the family, the cover, the order, the shares or the branch",
+ "carries_no_design_quantity": true
+}

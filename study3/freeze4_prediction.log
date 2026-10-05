@@ -1,0 +1,55 @@
+
+=== what is being predicted ===
+  this script sha256         42d36dab75561e3d1a5bab487ad7ae364b7b86734cf49e075df5c8f3b0469a8f
+  protocol instance          /home/ramsey5080/Norqobil/runs/cascade/protocol_v249
+  expected code              aa461f6b8f1f2b556544e78680565ccc5cd4fbad56dbd8fe85185dd1069464b7
+  cascade imported from      /home/ramsey5080/Norqobil/v249/cascade
+
+=== files ===
+  det_sha256                 82997578e96f7ebe556c2e9f29bfecac27faa9db5761bce79636d3529af30d94
+  agent_overlay_sha256       3a36f69397478122ef66b18bb3acf44eb774cc8ff101abd3ceab0ea81caf3908
+  agent_crop_sha256          137638bde4e8b79e8007d9ff7b2b0187de294548d9d3d6c9e5c31dfb92f5264a
+
+=== same deployment configuration the registered studies used? ===
+  det vs Study 2 82997578... MATCH
+  overlay vs Study 2 3a36f693... MATCH
+  crop vs Study 2 137638bd... MATCH
+
+=== what freeze will check ===
+  dataset manifest unchanged OK
+  agent <- this det meta     OK
+  agent <- this det csv      OK
+  protocol.lock absent       OK
+  receipt.json absent        OK
+  final_receipt absent       OK
+
+=== check_metas (protocol.yaml vs the two meta files) ===
+  problems                   NONE
+  freeze will fill           nothing
+
+=== protocol.yaml ===
+  protocol.yaml sha256       f585e490d9bc4aa047e8c91fc3e7f3d482560b7d8e21fedfa78f152e9cc02fa4
+  splits.csv sha256          362d8689b193d61b3f97ff08ea1acd1a0956824cbbea3544f96921940994d27f
+  will change                no
+  pre-freeze backup          ABSENT
+
+=== code ===
+  analysis_code_sha256       aa461f6b8f1f2b556544e78680565ccc5cd4fbad56dbd8fe85185dd1069464b7
+  expected                   aa461f6b8f1f2b556544e78680565ccc5cd4fbad56dbd8fe85185dd1069464b7
+
+=== the prediction, in the recorded shape ===
+protocol.yaml   f585e490d9bc4aa047e8c91fc3e7f3d482560b7d8e21fedfa78f152e9cc02fa4
+splits.csv      362d8689b193d61b3f97ff08ea1acd1a0956824cbbea3544f96921940994d27f
+lock present    False | receipt False
+manifest ok     True · ag<-detmeta True · ag<-detcsv True
+PROBLEMS        NONE
+WILL FILL       nothing
+code            aa461f6b8f1f2b556544e78680565ccc5cd4fbad56dbd8fe85185dd1069464b7
+target          /home/ramsey5080/Norqobil/runs/cascade/protocol_v249
+
+========================================================================
+PREDICTION: freeze will SUCCEED and lock protocol_v249
+  --det                      /home/ramsey5080/Norqobil/runs/cascade/det_yolo26-base_s0_nms-none.csv
+  --agent                    /home/ramsey5080/Norqobil/runs/cascade/agent_Qwen2.5-VL-3B-Instruct-none-overlay_yolo26-base_s0_nms-none.csv
+
+  Nothing was written by this script.

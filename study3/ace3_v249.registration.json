@@ -1,0 +1,1606 @@
+{
+ "study": "ace_ltt_study3_p45_stress",
+ "spec_version": "v2.4.3",
+ "receipt": "R1",
+ "registered_utc": "2026-09-28T02:09:58Z",
+ "declaration": {
+  "study": "ace_ltt_study3_p45_stress",
+  "spec_version": "v2.4.3",
+  "status": "prospective / pre-registered on units never read by Studies 1-2; the P-4.5 predictions are finite-sample predictions evaluated once, carrying no p-value and no population claim",
+  "question": "Does the Sec. 4.5 design-time capacity statement survive a prospective test: does the design-fold influence-envelope capacity of a chain's varying coordinate bound the reach that coordinate realizes on a fresh certify fold (T), and is capability sufficient for a reach at least as large as the finite-sample margin (S)?",
+  "governing_invariant": "design chooses; the audit metadata A may only refuse",
+  "stages": [
+   "P0",
+   "R0",
+   "design on calibration-select",
+   "R1",
+   "A",
+   "C3 verify/refuse",
+   "one execution"
+  ],
+  "design_reference_count": {
+   "rule": "n_ref_k = floor(n_sel_k * (1 - select_fraction) / select_fraction)",
+   "at_sf_0_3": "floor(7 * n_sel_k / 3)",
+   "floor_is_deliberate": "certification_boundary takes an integer n, and a fractional future unit earns the design no credit",
+   "status": "DESIGN REFERENCE ONLY - never an estimator, never a validity quantity. It is the only count the design stage may see."
+  },
+  "branches": {
+   "full": {
+    "modes": [
+     "crop",
+     "overlay"
+    ],
+    "M": 4,
+    "delta_m": 0.025,
+    "n_min": 72
+   },
+   "fallback": {
+    "modes": [
+     "overlay"
+    ],
+    "M": 2,
+    "delta_m": 0.05,
+    "n_min": 59
+   }
+  },
+  "branch_rule": "from n_ref ALONE: full if n_ref_k >= 72 for both k; else fallback if n_ref_k >= 59 for both k; else design-stage REFUSE (C3_CERTIFIABILITY_AUDIT). 72 = n_min(0.05, 0.025), 59 = n_min(0.05, 0.05). The realized cover must then reproduce the branch's declared (M, delta_m) to 1e-12 or the registration REFUSES; no re-planning, no re-seeding.",
+  "no_switch": "there is no full -> fallback switch at the audit stage or at execution. A realized n_cert below the chosen branch's n_min REFUSES.",
+  "support_proxy": "the design stage applies the C3 THRESHOLD n_min(alpha_k, delta_m) at n_ref. This is a DESIGN-TIME SUPPORT PROXY, not clause C3: n_ref is not the audit population, so it discharges no premise. Formal C3 is tested once, after A is opened.",
+  "acquisitions": [
+   "crop",
+   "overlay"
+  ],
+  "veto": {
+   "stratum": {
+    "kind": "small_smoke",
+    "area_max": 0.02
+   },
+   "partition": [
+    "S",
+    "rest"
+   ],
+   "lambda_fixed": 0.4,
+   "why": "the pre-Study-1 working point Study 2 registered as lambda_fixed; not selected from any study's result"
+  },
+  "arms": {
+   "B": {
+    "coordinate": "b",
+    "fixed": {
+     "lambda": 0.4
+    },
+    "ladder_rule": "every g-grid edge b <= A forming a valid candidate at the chosen (t_low, t_high, A), ASCENDING. The g grid is fixed in cascade.policy.Grid, so the ladder is a deterministic function of the chosen thresholds and of nothing observed.",
+    "min_members": 3,
+    "envelope": "S_B",
+    "order": "ascending b: safest (largest response set) first"
+   },
+   "L": {
+    "coordinate": "lambda",
+    "fixed": {
+     "b": 0.25
+    },
+    "ladder_rule": "lambda in {0.0, 0.2, 0.4, 0.6, 0.8, 1.0}, safest first (descending lambda)",
+    "min_members": 3,
+    "envelope": "S_L",
+    "order": "descending lambda: safest first",
+    "b_provenance": "b = 0.25 is carried forward from the operating point Study 2's pre-registered utility selected in its historical development run. It is used ONLY as pre-existing design information; no validity claim from Study 2 is imported into Study 3. Arm B's safest endpoint was considered and rejected: as b -> 0 the response set absorbs the whole escalated population, so lambda becomes inert with respect to the response-miss risk it is supposed to move.",
+    "refuse_if": "b_L = 0.25 is not a valid candidate at the mode's chosen (t_low, t_high, A)"
+   }
+  },
+  "lambda_grid": [
+   0.0,
+   0.2,
+   0.4,
+   0.6,
+   0.8,
+   1.0
+  ],
+  "b_fixed_L": 0.25,
+  "cover": {
+   "rule": "the cover is computed WITHIN AN ARM, never over the union of the arms; the two arms are two registered families, each with its own delta",
+   "why": "build_chains groups by (acq, t_low, t_high, B0, strata) and the group key holds the stratification KEYS, not the lambda values, so on one mode at the same thresholds arms B and L share a group and cross-arm pairs are >=_cert-comparable: the minimum cover interleaves them (measured: ['B|b=0','B|b=0.1','B|b=0.25','L|lam=0.4','B|b=0.4']). Such a chain has two varying coordinates, so neither S_B nor S_L is its envelope and the (C,k) primitives have nothing to attach to.",
+   "delta_split": {
+    "delta": 0.1,
+    "delta_B": 0.05,
+    "delta_L": 0.05,
+    "arithmetic": "4 x 0.025 = 0.10 on the full branch; 2 x 0.05 = 0.10 on the fallback"
+   },
+   "validity": "any partition into >=_cert-chains fixed before the test fold gives the guarantee, and minimality is a POWER property, not a validity property (Sec. 3.4). The price of covering per arm is a little power; the return is chains whose varying coordinate, and therefore whose influence envelope, is well defined.",
+   "invariant": "no chain of the registered cover may contain members of both arms"
+  },
+  "thresholds": {
+   "rule": "per mode, at the frozen lambda, choose (t_low, t_high, A) on calibration-SELECT among configurations whose b ladder satisfies BOTH: (i) the safe endpoint is joint-select-feasible, s_joint = min_k (r_star_ref_k - R_sel_k) >= 0; and (ii) the ladder is BOUNDARY_SPANNING, max_pi s_joint >= 0 and min_pi s_joint < 0. Among those, minimise the declared utility over the ladder members on the certifiable side.",
+   "boundary": "r_star_ref ONLY; the design stage never sees r_star_cert",
+   "re_derived": "(t_low, t_high, A) are re-derived on calibration-select, not carried over from dev: calibration-select is Study 3's design fold, so this keeps the family a function of the fresh fold rather than of the fold Studies 1 and 2 used",
+   "frozen_at": "registration (from select-fold data only); the runner recomputes and must match"
+  },
+  "losses": [
+   {
+    "name": "fire",
+    "alpha": 0.05,
+    "catch_set": "response",
+    "aggregation": "unit_mean_over_events",
+    "weighting": "uniform",
+    "empty_denominator": "exclude_unit",
+    "lemma": "ACE-LTT spec v2.4 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+   },
+   {
+    "name": "smoke",
+    "alpha": 0.05,
+    "catch_set": "response",
+    "aggregation": "unit_mean_over_events",
+    "weighting": "uniform",
+    "empty_denominator": "exclude_unit",
+    "lemma": "ACE-LTT spec v2.4 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+   }
+  ],
+  "envelopes": {
+   "definition": "an INFLUENCE ENVELOPE S is any event set CONTAINING every event whose catch status the coordinate can change. Minimality gives the tightest bound; a superset is admissible and gives a looser one. Gamma_k,D(S) = |D|^-1 sum_u |E_ku n S|/|E_ku| over units carrying at least one positive k-event, computed PER CHAIN AT ITS OWN MODE (Study 2's minimum over modes is kept only for the pre-freeze checklist).",
+   "S_B": "for mode a at its frozen (t_low, t_high): a positive k-event e is in S_B iff some positive frame of e has t_low <= s < t_high AND no positive frame of e has s >= t_high. This is the MINIMAL envelope for b: an event outside it is caught or missed regardless of b.",
+   "S_L": "a positive k-event e is in S_L iff at least one positive frame of e satisfies StratumSpec(kind='small_smoke', area_max=0.02) - top smoke box area <= area_max and s_smoke >= s_fire, label-free, from the detector boxes only - the predicate the released lambda_capacity implements, carried over unchanged.",
+   "S_L_scope": "S_L is a CONSERVATIVE influence envelope, not the minimal acting domain: it includes events already caught by the edge stage, whose catch status lambda cannot change. So Gamma_L is a valid reach upper bound but may be loose, and the direction of that looseness is stated rather than glossed: a larger Gamma_L makes T EASIER to satisfy and makes CAPABLE_L easier to trigger, which makes S HARDER. No tightened envelope is substituted after the fact."
+  },
+  "predictions": {
+   "margin": "h_star_ref_k = max(0, bar_k - r_star_ref_k) with bar_k = alpha_k (pre-registered reference bar); CAPABLE_k(C) = 1{Gamma_sel_k(S) >= h_star_ref_k}",
+   "bar_why": "Study 2 registered the tight bound R_sel_k <= r_star_k, which makes the margin 0 and the capacity condition vacuous. Since r_star_ref_k <= alpha_k the selection rule also guarantees R_sel_k <= alpha_k, so Study 3 pre-registers the weaker but still selection-guaranteed reference bar bar_k = alpha_k in order to evaluate a non-vacuous reach margin. The effect is not one-directional: a larger h_star_ref_k makes CAPABLE harder to reach.",
+   "T": "sp_cert_k(C) <= Gamma_sel_k(S)                              primary; cross-fold reach bound",
+   "S": "CAPABLE_k(C) = 1 => sp_cert_k(C) >= h_star_ref_k            primary",
+   "N": "CAPABLE_k(C) = 0 and T => sp_cert_k(C) < h_star_ref_k       DERIVED; never evidence",
+   "X": "CAPABLE_k(C) = 1 and R_sel_k(pi_1) > r_star_ref_k => X_k(C) = 1, where X_k(C) = 1{R_cert_k(pi_1) <= r_star_cert_k}. Secondary and confounded. X is the ONLY primitive that touches r_star_cert; its antecedent is an R1 quantity.",
+   "chain_label": "AND_k CAPABLE_k(C) is DERIVED, reported for continuity with Sec. 3.6, used in no prediction",
+   "what_they_are": "pre-registered FINITE-SAMPLE predictions, evaluated once on the fresh certify fold. No p-value, confidence statement, sampling distribution or population-level generalisation attaches to any of them. The only statements carrying a probability are the certificates of Theorem 1, which do not depend on T/S/N/X.",
+   "tolerance": {
+    "tau": 1e-12,
+    "knife_edge": 1e-06
+   },
+   "comparison_semantics": "float64, absolute tolerance tau = 1e-12: status uses plain >=; T holds iff sp_cert_k <= Gamma_sel_k + tau; S holds iff sp_cert_k >= h_star_ref_k - tau; X uses the plain test and must match the engine bit for bit",
+   "KNIFE_EDGE": "|Gamma_sel_k - h_star_ref_k| <= 1e-06: excluded from the S verdict and from R2's count, kept in T, reported with its numbers. Both quantities are known at R1, so the exclusion is decided blind to the outcome.",
+   "NO_REACH": "a pair whose chain has |C| = 1 has sp_D_k == 0, so T holds trivially and S fails trivially for any h_star_ref_k > 0: no reach exists to measure. Decided at R1, excluded from the T, S and N verdicts and from R2's count, reported.",
+   "CHAIN_TERMINAL": "ANY post-registration CHAIN_TERMINAL affecting a registered primary pair => P-4.5 = REFUSED. The terminal chain's pair-level numbers are reported; other chains may be reported descriptively; no study-level T or S confirmatory verdict is given; R2 is NOT recomputed; the denominator is NOT shrunk after execution.",
+   "R2": "INFORMATIVE iff, among the pairs of the registered cover that are neither KNIFE_EDGE nor NO_REACH, there exists (C,k) with CAPABLE = 1 AND (C',k') with CAPABLE = 0. Decided at R1, before any certify outcome, never recomputed.",
+   "verdict_space": [
+    "INFORMATIVE",
+    "UNINFORMATIVE",
+    "REFUSED"
+   ],
+   "uninformative_rule": "no confirmatory interpretation of T, S or N; the run still executes and is reported as an independent registered ACE-LTT certification on fresh units; no certify-fold outcome is used to redesign the P-4.5 family, in this paper or a later one; no recovery of the form 'after execution we happened to see both types' is permitted. A bigger n_ref_k raises r_star_ref_k and shrinks h_star_ref_k, so a coordinate that was incapable on a smaller design reference count can come back capable - accepted, not designed around. The realized n_cert_k cannot move CAPABLE, R2 or the KNIFE_EDGE set at all."
+  },
+  "alpha": 0.05,
+  "delta": 0.1,
+  "unit": "split_group (global dedup component)",
+  "target": "event",
+  "role": "calibration",
+  "split": {
+   "rule": "select/certify split of the CALIBRATION units; select_fraction and calibrate_seed from protocol.yaml, quoted by value into the receipt",
+   "reproduction": "cascade.ace_register.certify_mask (identical to cascade.select.calibrate)"
+  },
+  "utility": {
+   "calls": 1.0,
+   "fa": 10.0,
+   "handoff": 20.0,
+   "scope": "the reported operating point ONLY; never T, S, N or X",
+   "caveat": "FA, calls and hand-off measured on the certify fold are selection-side quantities, not an unbiased performance estimate"
+  },
+  "one_fold_two_uses": {
+   "fact": "the fresh certify fold both issues the ACE-LTT certificate and evaluates T, S and X",
+   "allowed": [
+    "an independent fresh-fold test of the Sec. 4.5 extension",
+    "evaluated on units not used to design the family"
+   ],
+   "not_allowed": [
+    "independent of the ACE-LTT certification result"
+   ],
+   "why": "they are the same units"
+  },
+  "source_concentration": "the prospective fold is fresh with respect to the registered unit split, but it is not a new-domain evaluation: 88.6% of calibration units come from the dominant source, and the smallest source contributes only two units",
+  "outcome_rule": "the study reports what the procedure returns: certified set per arm, operating point, chain certificates, every NOT CERTIFIED clause that fired, and the (C,k) statuses as measured. Nothing is added, removed or re-ordered after the certify fold is touched. An empty certified set is a reportable outcome."
+ },
+ "preconditions": {
+  "stages": [
+   "P0",
+   "R0",
+   "design on calibration-select",
+   "R1",
+   "A",
+   "C3 verify/refuse",
+   "one execution"
+  ],
+  "P0_role_split": {
+   "role": "calibration",
+   "select_fraction": 0.3,
+   "seed": 1,
+   "n_units": 6045,
+   "n_select_units": 1814,
+   "n_certify_units": 4231,
+   "n_select_uids": 2812,
+   "n_certify_uids": 12349,
+   "roles_present": [
+    "calibration",
+    "dev",
+    "external_shift",
+    "sealed_test"
+   ],
+   "derived_from": "splits.csv only (uid, role, unit, event); no label, score or feature read",
+   "select_units_digest": "e964875ca75fbaa7d61dc9e8084fa1b3f7680964a7dcec67a4ae120f08a994f7",
+   "certify_units_digest": "cd5b3f9e58c6777e374db4ed928f8c406d4f889135f3536a2aa0fd9ca55786d2"
+  },
+  "P0_protocol_state": {
+   "protocol_lock_present": true,
+   "locked_analysis_code_sha256": "aa461f6b8f1f2b556544e78680565ccc5cd4fbad56dbd8fe85185dd1069464b7",
+   "lock_sha256": "7a30ea4a43fc7b3be08b515207167a29b5a7814c126e12ef95800eff1084c523",
+   "sealed_test_unseal_receipt": null,
+   "problems": [],
+   "ok": true,
+   "gate": "freeze must precede the design stage; a stale lock or an opened seal refuses here"
+  },
+  "P0_events_spanning_units": {},
+  "P0_set_operations": {
+   "disjointness": {
+    "select&certify": [],
+    "select&sealed": [],
+    "certify&sealed": []
+   },
+   "disjoint": true,
+   "units_in_more_than_one_role": [],
+   "every_unit_exactly_one_role": true,
+   "select_union_certify_equals_calibration": true,
+   "role_sizes": {
+    "calibration": 6045,
+    "dev": 5989,
+    "external_shift": 874,
+    "sealed_test": 6045
+   },
+   "n_select_units": 1814,
+   "n_certify_units": 4231,
+   "select_fraction": 0.3,
+   "calibrate_seed": 1,
+   "reproduces_from_seed_alone": true,
+   "derived_from": "splits.csv only; no label, score or feature was read to compute this",
+   "digests": {
+    "select": "e964875ca75fbaa7d61dc9e8084fa1b3f7680964a7dcec67a4ae120f08a994f7",
+    "certify": "cd5b3f9e58c6777e374db4ed928f8c406d4f889135f3536a2aa0fd9ca55786d2"
+   },
+   "digest_note": "the digests are ATTESTATION of the asserted sets; the set operations above are what is checked, and they are checked first"
+  },
+  "R0_design_reference": {
+   "n_sel": {
+    "fire": 488,
+    "smoke": 454
+   },
+   "n_ref": {
+    "fire": 1138,
+    "smoke": 1059
+   },
+   "rule": "n_ref_k = floor(n_sel_k * (1 - select_fraction) / select_fraction)",
+   "select_fraction": 0.3,
+   "branch": "full",
+   "M_declared": 4,
+   "delta_m_declared": 0.025,
+   "n_min_of_branch": 72,
+   "modes": [
+    "crop",
+    "overlay"
+   ],
+   "support_proxy_note": "the design stage applies the C3 THRESHOLD n_min(alpha_k, delta_m) at n_ref. This is a DESIGN-TIME SUPPORT PROXY, not clause C3: n_ref is not the audit population, so it discharges no premise. Formal C3 is tested once, after A is opened.",
+   "certify_counts_read": false
+  },
+  "R1_cover": {
+   "B": {
+    "M": 2,
+    "cover_id": "cdae0eb78084eb218540f6272de02a894a798df91a1077ec2b27634df20aa148",
+    "chains": [
+     [
+      "B|crop|b=0",
+      "B|crop|b=0.05",
+      "B|crop|b=0.1",
+      "B|crop|b=0.15",
+      "B|crop|b=0.2",
+      "B|crop|b=0.25",
+      "B|crop|b=0.3",
+      "B|crop|b=0.35",
+      "B|crop|b=0.4",
+      "B|crop|b=0.45",
+      "B|crop|b=0.5",
+      "B|crop|b=0.55",
+      "B|crop|b=0.6",
+      "B|crop|b=0.65",
+      "B|crop|b=0.7"
+     ],
+     [
+      "B|overlay|b=0",
+      "B|overlay|b=0.05",
+      "B|overlay|b=0.1",
+      "B|overlay|b=0.15",
+      "B|overlay|b=0.2",
+      "B|overlay|b=0.25",
+      "B|overlay|b=0.3",
+      "B|overlay|b=0.35",
+      "B|overlay|b=0.4",
+      "B|overlay|b=0.45",
+      "B|overlay|b=0.5",
+      "B|overlay|b=0.55"
+     ]
+    ],
+    "delta_arm": 0.05,
+    "delta_m": [
+     0.025,
+     0.025
+    ]
+   },
+   "L": {
+    "M": 2,
+    "cover_id": "3f4a679978493de63264d2225af24b5fef74ae5ec2d9437b6a50e973317c099c",
+    "chains": [
+     [
+      "L|crop|lam=1",
+      "L|crop|lam=0.8",
+      "L|crop|lam=0.6",
+      "L|crop|lam=0.4",
+      "L|crop|lam=0.2",
+      "L|crop|lam=0"
+     ],
+     [
+      "L|overlay|lam=1",
+      "L|overlay|lam=0.8",
+      "L|overlay|lam=0.6",
+      "L|overlay|lam=0.4",
+      "L|overlay|lam=0.2",
+      "L|overlay|lam=0"
+     ]
+    ],
+    "delta_arm": 0.05,
+    "delta_m": [
+     0.025,
+     0.025
+    ]
+   },
+   "arm_purity_violations": [],
+   "M_total": 4,
+   "combined_cover_id": "3af983c66d646b81bf742386817bdaedcc973e5865f43497a1e7eb35090bf1c3",
+   "delta_split": {
+    "delta": 0.1,
+    "delta_B": 0.05,
+    "delta_L": 0.05,
+    "arithmetic": "4 x 0.025 = 0.10 on the full branch; 2 x 0.05 = 0.10 on the fallback"
+   }
+  },
+  "R1_declared_vs_realized": {
+   "M_declared": 4,
+   "M_realized": 4,
+   "M_ok": true,
+   "delta_m_declared": 0.025,
+   "delta_m_realized": [
+    0.025,
+    0.025,
+    0.025,
+    0.025
+   ],
+   "delta_m_ok": true,
+   "delta_sum_ok": true,
+   "min_members_ok": true,
+   "ok": true,
+   "on_mismatch": "REFUSE; no re-planning, no re-seeding, no branch switch"
+  },
+  "R1_family": {
+   "thresholds": {
+    "crop": {
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "A": 0.7000000000000001,
+     "b_ladder": [
+      0.0,
+      0.05,
+      0.1,
+      0.15000000000000002,
+      0.2,
+      0.25,
+      0.30000000000000004,
+      0.35000000000000003,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6000000000000001,
+      0.65,
+      0.7000000000000001
+     ],
+     "joint_slack": [
+      0.01857583198844074,
+      0.01857583198844074,
+      0.01857583198844074,
+      0.01857583198844074,
+      0.01857583198844074,
+      0.014170545644828406,
+      0.014160180265196377,
+      0.014123901436484274,
+      0.01191607557486209,
+      0.003095137508005389,
+      -0.0013205142152389812,
+      -0.005730983248667332,
+      -0.015648060211611102,
+      -0.017850703383417273,
+      -0.02557031986437089
+     ],
+     "slack_per_loss": [
+      {
+       "fire": 0.028119307345995048,
+       "smoke": 0.01857583198844074
+      },
+      {
+       "fire": 0.028119307345995048,
+       "smoke": 0.01857583198844074
+      },
+      {
+       "fire": 0.028119307345995048,
+       "smoke": 0.01857583198844074
+      },
+      {
+       "fire": 0.028119307345995048,
+       "smoke": 0.01857583198844074
+      },
+      {
+       "fire": 0.028119307345995048,
+       "smoke": 0.01857583198844074
+      },
+      {
+       "fire": 0.028119307345995048,
+       "smoke": 0.014170545644828406
+      },
+      {
+       "fire": 0.02605111792417565,
+       "smoke": 0.014160180265196377
+      },
+      {
+       "fire": 0.01986936057145811,
+       "smoke": 0.014123901436484274
+      },
+      {
+       "fire": 0.015751990821769857,
+       "smoke": 0.01191607557486209
+      },
+      {
+       "fire": 0.011646026528451932,
+       "smoke": 0.003095137508005389
+      },
+      {
+       "fire": 0.00754006223513401,
+       "smoke": -0.0013205142152389812
+      },
+      {
+       "fire": 0.0075362604163439,
+       "smoke": -0.005730983248667332
+      },
+      {
+       "fire": 0.0024057059590915503,
+       "smoke": -0.015648060211611102
+      },
+      {
+       "fire": 0.00035652563122269554,
+       "smoke": -0.017850703383417273
+      },
+      {
+       "fire": -0.004766425188449434,
+       "smoke": -0.02557031986437089
+      }
+     ],
+     "select_utility": 0.35490753911806466,
+     "select_risk_safe_endpoint": {
+      "fire": 0.006151342802396667,
+      "smoke": 0.015418502202643172
+     },
+     "grid": {
+      "s_edges": [
+       0.02,
+       0.066,
+       0.2633,
+       0.3666,
+       0.4288,
+       0.4825,
+       0.5207,
+       0.5533,
+       0.5756,
+       0.5913,
+       0.6101,
+       0.6342,
+       0.6531,
+       0.6736,
+       0.69,
+       0.7064,
+       0.7235,
+       0.7374,
+       0.7577,
+       0.7762,
+       0.7935,
+       0.8073,
+       0.8266,
+       0.8478,
+       0.8674,
+       0.9,
+       Infinity
+      ],
+      "g_edges": [
+       0.0,
+       0.05,
+       0.1,
+       0.15000000000000002,
+       0.2,
+       0.25,
+       0.30000000000000004,
+       0.35000000000000003,
+       0.4,
+       0.45,
+       0.5,
+       0.55,
+       0.6000000000000001,
+       0.65,
+       0.7000000000000001,
+       0.75,
+       0.8,
+       0.8500000000000001,
+       0.9,
+       0.9500000000000001,
+       1.0,
+       Infinity
+      ]
+     },
+     "spanning": {
+      "status": "BOUNDARY_SPANNING",
+      "n": 15,
+      "max_joint_slack": 0.01857583198844074,
+      "min_joint_slack": -0.02557031986437089,
+      "safe_endpoint_feasible": true,
+      "reason": ""
+     }
+    },
+    "overlay": {
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "A": 0.55,
+     "b_ladder": [
+      0.0,
+      0.05,
+      0.1,
+      0.15000000000000002,
+      0.2,
+      0.25,
+      0.30000000000000004,
+      0.35000000000000003,
+      0.4,
+      0.45,
+      0.5,
+      0.55
+     ],
+     "joint_slack": [
+      0.01857583198844074,
+      0.01857583198844074,
+      0.016373188816634576,
+      0.009728980472503972,
+      0.004196459093908478,
+      0.0019834505424702817,
+      -0.006827122144754394,
+      -0.011237591178182745,
+      -0.015648060211611095,
+      -0.01785070338341726,
+      -0.026661276070641927,
+      -0.02667682414008997
+     ],
+     "slack_per_loss": [
+      {
+       "fire": 0.028119307345995048,
+       "smoke": 0.01857583198844074
+      },
+      {
+       "fire": 0.028119307345995048,
+       "smoke": 0.01857583198844074
+      },
+      {
+       "fire": 0.02810790188962472,
+       "smoke": 0.016373188816634576
+      },
+      {
+       "fire": 0.019865558752668,
+       "smoke": 0.009728980472503972
+      },
+      {
+       "fire": 0.015744387184189638,
+       "smoke": 0.004196459093908478
+      },
+      {
+       "fire": 0.013683801399950457,
+       "smoke": 0.0019834505424702817
+      },
+      {
+       "fire": 0.013683801399950457,
+       "smoke": -0.006827122144754394
+      },
+      {
+       "fire": 0.011630819253291496,
+       "smoke": -0.011237591178182745
+      },
+      {
+       "fire": 0.009577837106632535,
+       "smoke": -0.015648060211611095
+      },
+      {
+       "fire": 0.005479476450894829,
+       "smoke": -0.01785070338341726
+      },
+      {
+       "fire": 0.001381115795157123,
+       "smoke": -0.026661276070641927
+      },
+      {
+       "fire": 0.001381115795157123,
+       "smoke": -0.02667682414008997
+      }
+     ],
+     "select_utility": 0.34779516358463697,
+     "select_risk_safe_endpoint": {
+      "fire": 0.006151342802396667,
+      "smoke": 0.015418502202643172
+     },
+     "grid": {
+      "s_edges": [
+       0.02,
+       0.066,
+       0.2633,
+       0.3666,
+       0.4288,
+       0.4825,
+       0.5207,
+       0.5533,
+       0.5756,
+       0.5913,
+       0.6101,
+       0.6342,
+       0.6531,
+       0.6736,
+       0.69,
+       0.7064,
+       0.7235,
+       0.7374,
+       0.7577,
+       0.7762,
+       0.7935,
+       0.8073,
+       0.8266,
+       0.8478,
+       0.8674,
+       0.9,
+       Infinity
+      ],
+      "g_edges": [
+       0.0,
+       0.05,
+       0.1,
+       0.15000000000000002,
+       0.2,
+       0.25,
+       0.30000000000000004,
+       0.35000000000000003,
+       0.4,
+       0.45,
+       0.5,
+       0.55,
+       0.6000000000000001,
+       0.65,
+       0.7000000000000001,
+       0.75,
+       0.8,
+       0.8500000000000001,
+       0.9,
+       0.9500000000000001,
+       1.0,
+       Infinity
+      ]
+     },
+     "spanning": {
+      "status": "BOUNDARY_SPANNING",
+      "n": 12,
+      "max_joint_slack": 0.01857583198844074,
+      "min_joint_slack": -0.02667682414008997,
+      "safe_endpoint_feasible": true,
+      "reason": ""
+     }
+    }
+   },
+   "r_star_ref": {
+    "fire": 0.034270650148391715,
+    "smoke": 0.033994334191083914
+   },
+   "policies": [
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.0,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.05,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.05"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.1,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.1"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.15000000000000002,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.15"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.2,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.2"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.25"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.30000000000000004,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.3"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.35000000000000003,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.35"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.4,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.4"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.45,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.45"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.5,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.5"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.55,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.55"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.6000000000000001,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.6"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.65,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.65"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.7000000000000001,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|crop|b=0.7"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.0,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|overlay|b=0"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.05,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|overlay|b=0.05"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.1,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|overlay|b=0.1"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.15000000000000002,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|overlay|b=0.15"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.2,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|overlay|b=0.2"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|overlay|b=0.25"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.30000000000000004,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|overlay|b=0.3"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.35000000000000003,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|overlay|b=0.35"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.4,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|overlay|b=0.4"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.45,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|overlay|b=0.45"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.5,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|overlay|b=0.5"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.55,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "B|overlay|b=0.55"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 1.0,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "L|crop|lam=1"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.8,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "L|crop|lam=0.8"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.6,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "L|crop|lam=0.6"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "L|crop|lam=0.4"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.2,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "L|crop|lam=0.2"
+    },
+    {
+     "acq": "crop",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.7000000000000001,
+     "veto": {
+      "S": 0.0,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "L|crop|lam=0"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.55,
+     "veto": {
+      "S": 1.0,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "L|overlay|lam=1"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.55,
+     "veto": {
+      "S": 0.8,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "L|overlay|lam=0.8"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.55,
+     "veto": {
+      "S": 0.6,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "L|overlay|lam=0.6"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.55,
+     "veto": {
+      "S": 0.4,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "L|overlay|lam=0.4"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.55,
+     "veto": {
+      "S": 0.2,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "L|overlay|lam=0.2"
+    },
+    {
+     "acq": "overlay",
+     "t_low": 0.066,
+     "t_high": 0.3666,
+     "b": 0.25,
+     "A": 0.55,
+     "veto": {
+      "S": 0.0,
+      "rest": 0.0
+     },
+     "B0": Infinity,
+     "name": "L|overlay|lam=0"
+    }
+   ],
+   "arms": {
+    "B": [
+     "B|crop|b=0",
+     "B|crop|b=0.05",
+     "B|crop|b=0.1",
+     "B|crop|b=0.15",
+     "B|crop|b=0.2",
+     "B|crop|b=0.25",
+     "B|crop|b=0.3",
+     "B|crop|b=0.35",
+     "B|crop|b=0.4",
+     "B|crop|b=0.45",
+     "B|crop|b=0.5",
+     "B|crop|b=0.55",
+     "B|crop|b=0.6",
+     "B|crop|b=0.65",
+     "B|crop|b=0.7",
+     "B|overlay|b=0",
+     "B|overlay|b=0.05",
+     "B|overlay|b=0.1",
+     "B|overlay|b=0.15",
+     "B|overlay|b=0.2",
+     "B|overlay|b=0.25",
+     "B|overlay|b=0.3",
+     "B|overlay|b=0.35",
+     "B|overlay|b=0.4",
+     "B|overlay|b=0.45",
+     "B|overlay|b=0.5",
+     "B|overlay|b=0.55"
+    ],
+    "L": [
+     "L|crop|lam=1",
+     "L|crop|lam=0.8",
+     "L|crop|lam=0.6",
+     "L|crop|lam=0.4",
+     "L|crop|lam=0.2",
+     "L|crop|lam=0",
+     "L|overlay|lam=1",
+     "L|overlay|lam=0.8",
+     "L|overlay|lam=0.6",
+     "L|overlay|lam=0.4",
+     "L|overlay|lam=0.2",
+     "L|overlay|lam=0"
+    ]
+   },
+   "boundary_namespace": "r_star_ref only; r_star_cert is opened by ace3_dev and is used by the certificate and by X, never by a design or R1 quantity"
+  },
+  "R1_boundary_spanning": {
+   "crop": {
+    "status": "BOUNDARY_SPANNING",
+    "n": 15,
+    "max_joint_slack": 0.01857583198844074,
+    "min_joint_slack": -0.02557031986437089,
+    "safe_endpoint_feasible": true,
+    "reason": ""
+   },
+   "overlay": {
+    "status": "BOUNDARY_SPANNING",
+    "n": 12,
+    "max_joint_slack": 0.01857583198844074,
+    "min_joint_slack": -0.02667682414008997,
+    "safe_endpoint_feasible": true,
+    "reason": ""
+   }
+  },
+  "R1_inference_registration": {
+   "registration": "ace_ltt_study3_p45_stress",
+   "registry_id": "58852db0d59492ce1acccf092df63d5913472fd2082cefe5fac3f7d9844f7bf8",
+   "inferences": [
+    "hb_unweighted_unit_mean"
+   ]
+  },
+  "R1_capacity": {
+   "B|crop": {
+    "fire": {
+     "loss": "fire",
+     "value": 0.05543051795979197,
+     "source": "design",
+     "basis": "calibration-select fold, at the frozen thresholds; envelope S_B, mode crop"
+    },
+    "smoke": {
+     "loss": "smoke",
+     "value": 0.06838559212231148,
+     "source": "design",
+     "basis": "calibration-select fold, at the frozen thresholds; envelope S_B, mode crop"
+    }
+   },
+   "B|overlay": {
+    "fire": {
+     "loss": "fire",
+     "value": 0.05543051795979197,
+     "source": "design",
+     "basis": "calibration-select fold, at the frozen thresholds; envelope S_B, mode overlay"
+    },
+    "smoke": {
+     "loss": "smoke",
+     "value": 0.06838559212231148,
+     "source": "design",
+     "basis": "calibration-select fold, at the frozen thresholds; envelope S_B, mode overlay"
+    }
+   },
+   "L|crop": {
+    "fire": {
+     "loss": "fire",
+     "value": 0.0020681894218193986,
+     "source": "design",
+     "basis": "calibration-select fold, at the frozen thresholds; envelope S_L, mode crop"
+    },
+    "smoke": {
+     "loss": "smoke",
+     "value": 0.01770406841150557,
+     "source": "design",
+     "basis": "calibration-select fold, at the frozen thresholds; envelope S_L, mode crop"
+    }
+   },
+   "L|overlay": {
+    "fire": {
+     "loss": "fire",
+     "value": 0.0020681894218193986,
+     "source": "design",
+     "basis": "calibration-select fold, at the frozen thresholds; envelope S_L, mode overlay"
+    },
+    "smoke": {
+     "loss": "smoke",
+     "value": 0.01770406841150557,
+     "source": "design",
+     "basis": "calibration-select fold, at the frozen thresholds; envelope S_L, mode overlay"
+    }
+   }
+  },
+  "R1_statuses": {
+   "h_star_ref": {
+    "fire": 0.015729349851608287,
+    "smoke": 0.01600566580891609
+   },
+   "r_star_ref": {
+    "fire": 0.034270650148391715,
+    "smoke": 0.033994334191083914
+   },
+   "pairs": {
+    "B|crop|fire": {
+     "chain": "B|crop",
+     "loss": "fire",
+     "arm": "B",
+     "mode": "crop",
+     "gamma_sel": 0.05543051795979197,
+     "h_star_ref": 0.015729349851608287,
+     "capable": true,
+     "knife_edge": false,
+     "no_reach": false
+    },
+    "B|crop|smoke": {
+     "chain": "B|crop",
+     "loss": "smoke",
+     "arm": "B",
+     "mode": "crop",
+     "gamma_sel": 0.06838559212231148,
+     "h_star_ref": 0.01600566580891609,
+     "capable": true,
+     "knife_edge": false,
+     "no_reach": false
+    },
+    "B|overlay|fire": {
+     "chain": "B|overlay",
+     "loss": "fire",
+     "arm": "B",
+     "mode": "overlay",
+     "gamma_sel": 0.05543051795979197,
+     "h_star_ref": 0.015729349851608287,
+     "capable": true,
+     "knife_edge": false,
+     "no_reach": false
+    },
+    "B|overlay|smoke": {
+     "chain": "B|overlay",
+     "loss": "smoke",
+     "arm": "B",
+     "mode": "overlay",
+     "gamma_sel": 0.06838559212231148,
+     "h_star_ref": 0.01600566580891609,
+     "capable": true,
+     "knife_edge": false,
+     "no_reach": false
+    },
+    "L|crop|fire": {
+     "chain": "L|crop",
+     "loss": "fire",
+     "arm": "L",
+     "mode": "crop",
+     "gamma_sel": 0.0020681894218193986,
+     "h_star_ref": 0.015729349851608287,
+     "capable": false,
+     "knife_edge": false,
+     "no_reach": false
+    },
+    "L|crop|smoke": {
+     "chain": "L|crop",
+     "loss": "smoke",
+     "arm": "L",
+     "mode": "crop",
+     "gamma_sel": 0.01770406841150557,
+     "h_star_ref": 0.01600566580891609,
+     "capable": true,
+     "knife_edge": false,
+     "no_reach": false
+    },
+    "L|overlay|fire": {
+     "chain": "L|overlay",
+     "loss": "fire",
+     "arm": "L",
+     "mode": "overlay",
+     "gamma_sel": 0.0020681894218193986,
+     "h_star_ref": 0.015729349851608287,
+     "capable": false,
+     "knife_edge": false,
+     "no_reach": false
+    },
+    "L|overlay|smoke": {
+     "chain": "L|overlay",
+     "loss": "smoke",
+     "arm": "L",
+     "mode": "overlay",
+     "gamma_sel": 0.01770406841150557,
+     "h_star_ref": 0.01600566580891609,
+     "capable": true,
+     "knife_edge": false,
+     "no_reach": false
+    }
+   }
+  },
+  "R1_rule_R2": {
+   "verdict": "INFORMATIVE",
+   "n_eligible": 8,
+   "n_capable": 6,
+   "n_incapable": 2,
+   "excluded_knife_edge": [],
+   "excluded_no_reach": [],
+   "decided_at": "R1",
+   "never_recomputed": true
+  },
+  "R1_checklist_design_proxy": {
+   "B": [
+    {
+     "item": "loss_by_loss_monotonicity",
+     "ok": true,
+     "detail": "fire: catch_set=response, agg=unit_mean_over_events, w=uniform, empty=exclude_unit, lemma=ACE-LTT spec v2.4 Sec. 4.3 Lemma, event-miss instance (2026-09-24); smoke: catch_set=response, agg=unit_mean_over_events, w=uniform, empty=exclude_unit, lemma=ACE-LTT spec v2.4 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+    },
+    {
+     "item": "deterministic_chain_cover",
+     "ok": true,
+     "detail": "dilworth_min_cover_kuhn/v1+greedy_above_400: M=2, permutation-invariant=True, id=cdae0eb78084eb21"
+    },
+    {
+     "item": "predeclared_delta_plan",
+     "ok": true,
+     "detail": "uniform: M=2, delta_m = delta/M (delta=0.10 -> 0.0500)"
+    },
+    {
+     "item": "policy_independent_audit_membership",
+     "ok": true,
+     "detail": "count and membership identical across the whole family"
+    },
+    {
+     "item": "fixed_payload_semantics",
+     "ok": true,
+     "detail": "no payload risk in the constrained family"
+    },
+    {
+     "item": "weights_hash_populated",
+     "ok": true,
+     "detail": "detector.weights_sha256 = b4dd9d7edf515401..."
+    },
+    {
+     "item": "chain_margin_capacity",
+     "ok": true,
+     "detail": "fire: n=1138, r*=0.0343, bar=0.0343, h*=0.0000, Gamma=0.0554 [design] -> MARGIN_CAPABLE; smoke: n=1059, r*=0.0340, bar=0.0340, h*=0.0000, Gamma=0.0684 [design] -> MARGIN_CAPABLE"
+    },
+    {
+     "item": "chain_boundary_spanning",
+     "ok": true,
+     "detail": "crop: BOUNDARY_SPANNING (max +0.0186, min -0.0256, safe endpoint feasible=True); overlay: BOUNDARY_SPANNING (max +0.0186, min -0.0267, safe endpoint feasible=True)"
+    },
+    {
+     "item": "inference_contract_executable",
+     "ok": true,
+     "detail": "registration=ace_ltt_study3_p45_stress, registry_id=58852db0d59492ce..., fire -> hb_unweighted_unit_mean [v1, w=uniform, chain_compatible=True]; smoke -> hb_unweighted_unit_mean [v1, w=uniform, chain_compatible=True]"
+    }
+   ],
+   "L": [
+    {
+     "item": "loss_by_loss_monotonicity",
+     "ok": true,
+     "detail": "fire: catch_set=response, agg=unit_mean_over_events, w=uniform, empty=exclude_unit, lemma=ACE-LTT spec v2.4 Sec. 4.3 Lemma, event-miss instance (2026-09-24); smoke: catch_set=response, agg=unit_mean_over_events, w=uniform, empty=exclude_unit, lemma=ACE-LTT spec v2.4 Sec. 4.3 Lemma, event-miss instance (2026-09-24)"
+    },
+    {
+     "item": "deterministic_chain_cover",
+     "ok": true,
+     "detail": "dilworth_min_cover_kuhn/v1+greedy_above_400: M=2, permutation-invariant=True, id=3f4a679978493de6"
+    },
+    {
+     "item": "predeclared_delta_plan",
+     "ok": true,
+     "detail": "uniform: M=2, delta_m = delta/M (delta=0.10 -> 0.0500)"
+    },
+    {
+     "item": "policy_independent_audit_membership",
+     "ok": true,
+     "detail": "count and membership identical across the whole family"
+    },
+    {
+     "item": "fixed_payload_semantics",
+     "ok": true,
+     "detail": "no payload risk in the constrained family"
+    },
+    {
+     "item": "weights_hash_populated",
+     "ok": true,
+     "detail": "detector.weights_sha256 = b4dd9d7edf515401..."
+    },
+    {
+     "item": "chain_margin_capacity",
+     "ok": true,
+     "detail": "fire: n=1138, r*=0.0343, bar=0.0343, h*=0.0000, Gamma=0.0021 [design] -> MARGIN_CAPABLE; smoke: n=1059, r*=0.0340, bar=0.0340, h*=0.0000, Gamma=0.0177 [design] -> MARGIN_CAPABLE"
+    },
+    {
+     "item": "chain_boundary_spanning",
+     "ok": true,
+     "detail": "crop: BOUNDARY_SPANNING (max +0.0186, min -0.0256, safe endpoint feasible=True); overlay: BOUNDARY_SPANNING (max +0.0186, min -0.0267, safe endpoint feasible=True)"
+    },
+    {
+     "item": "inference_contract_executable",
+     "ok": true,
+     "detail": "registration=ace_ltt_study3_p45_stress, registry_id=58852db0d59492ce..., fire -> hb_unweighted_unit_mean [v1, w=uniform, chain_compatible=True]; smoke -> hb_unweighted_unit_mean [v1, w=uniform, chain_compatible=True]"
+    }
+   ]
+  },
+  "R1_checklist_bars": {
+   "checklist_select_bar": {
+    "fire": 0.034270650148391715,
+    "smoke": 0.033994334191083914
+   },
+   "checklist_counts": {
+    "fire": 1138,
+    "smoke": 1059
+   },
+   "checklist_h_star": {
+    "fire": 0.0,
+    "smoke": 0.0
+   },
+   "why_vacuous": "the selection rule guarantees the safe endpoint at r*_ref, so the margin the coordinate is asked to span is max(0, r*_ref - r*_ref) = 0. The item verifies the SELECTION GUARANTEE; it is not the study's capacity statement.",
+   "prediction_reference_bar": {
+    "fire": 0.05,
+    "smoke": 0.05
+   },
+   "where_the_non_vacuous_statuses_live": "R1_statuses (h_star_ref = alpha - r*_ref, per (C,k))",
+   "capacity_minimum_scope": "within one arm; never over the union of the arms"
+  },
+  "R1_checklist_scope": "nine items per arm, closed on the design fold. `policy_independent_audit_membership` is verified here as a DESIGN PROXY on calibration-select, because the audit population does not exist before A is opened; cascade.ace3_dev re-runs all nine against the realized audit metadata, before any risk is evaluated, and refuses on any item that does not close there.",
+  "R1_runtime_tree": {
+   "ok": true,
+   "extra": [],
+   "missing": [],
+   "changed": []
+  }
+ },
+ "checklist_items": [
+  "loss_by_loss_monotonicity",
+  "deterministic_chain_cover",
+  "predeclared_delta_plan",
+  "policy_independent_audit_membership",
+  "fixed_payload_semantics",
+  "weights_hash_populated",
+  "chain_margin_capacity",
+  "chain_boundary_spanning",
+  "inference_contract_executable"
+ ],
+ "protocol_sha256": "f585e490d9bc4aa047e8c91fc3e7f3d482560b7d8e21fedfa78f152e9cc02fa4",
+ "splits_sha256": "362d8689b193d61b3f97ff08ea1acd1a0956824cbbea3544f96921940994d27f",
+ "analysis_code_sha256": "aa461f6b8f1f2b556544e78680565ccc5cd4fbad56dbd8fe85185dd1069464b7",
+ "det_sha256": "82997578e96f7ebe556c2e9f29bfecac27faa9db5761bce79636d3529af30d94",
+ "agent_sha256": {
+  "crop": "137638bde4e8b79e8007d9ff7b2b0187de294548d9d3d6c9e5c31dfb92f5264a",
+  "overlay": "3a36f69397478122ef66b18bb3acf44eb774cc8ff101abd3ceab0ea81caf3908"
+ },
+ "audit_metadata_present": false,
+ "audit_metadata_note": "this is the REGISTRATION receipt. It carries no audit metadata by construction: Z_k, the realized n_k and the membership digests are recorded in the AUDIT receipt, created afterwards by cascade.ace3_dev, and they may only verify this frozen procedure or refuse it.",
+ "note": ""
+}

@@ -1,0 +1,70 @@
+
+=== this suite ===
+  selftest sha256   3a5921379bb90c403f025fb000889ee51eae85b46494a2c1dd8a25dec5d20206
+  audits            ace3_run_audit.py  e9caed9b78c41bda...
+  runner            ace3_run.sh  b9addfccadb90a0f...
+  n_cert            {'fire': 1141, 'smoke': 1100}
+  r*_cert           {'fire': 0.0341805, 'smoke': 0.0345455}
+
+=== what the SUPERSEDED audit would have concluded (evidence the fixes change outcomes) ===
+  2  r*_cert == r*_ref coincidence      must PASS  superseded logic: FAIL  WRONGLY FAIL
+       it would have complained: h*_ref equals alpha - r*_cert: it was recomputed from the realized count
+  3  one predicted pair deleted         must FAIL  superseded logic: PASS  WRONGLY PASS
+  4  endpoints shifted together         must FAIL  superseded logic: PASS  WRONGLY PASS
+  5  CHAIN_TERMINAL, terminal_pairs=[]  must FAIL  superseded logic: PASS  WRONGLY PASS
+  6  one arm deleted                    must FAIL  superseded logic: PASS  WRONGLY PASS
+  7  a family member missing            must FAIL  superseded logic: PASS  WRONGLY PASS
+  8  a risk off the population          must FAIL  superseded logic: PASS  WRONGLY PASS
+  -> the superseded audit was wrong on 7 of 7 of these cases; the audit
+     above is right on all of them.
+
+=== cases ===
+  1  crashed-attempt log refuses a second run                        expect FAIL rc=1  OK
+       caught by: STOP: /tmp/ace3_runsh_pwmnra2d/Norqobil/v249/r1_execute_v249.log exists: this study is executed ONCE. A second execution is not a rerun, even if
+  1b an unpinned EXPECT_REG stops it, leaving no log                 expect FAIL rc=1  OK
+       caught by: STOP: EXPECT_REG is still __UNSET_UNTIL_R1__.
+  1c redirect appends, log reserved with noclobber                   expect PASS rc=0  OK
+  0  the clean fixture                                               expect PASS rc=0  OK
+  2  r*_cert == r*_ref, a clean coincidence                          expect PASS rc=0  OK
+  3  one predicted pair deleted                                      expect FAIL rc=1  OK
+       caught by: - predicted pairs: the key set differs from R1 (missing ['L|overlay|smoke'], extra [])
+  4  endpoints shifted together                                      expect FAIL rc=1  OK
+       caught by: - B|crop|fire: r_cert_anchor is 0.013000000000000001, the chain's endpoints give 0.01
+  5  CHAIN_TERMINAL with terminal_pairs = []                         expect FAIL rc=1  OK
+       caught by: - the terminal pairs do not reconstruct: only in the report [], only in the reconstruction ['B|crop|fire', 'B|crop|smoke']
+  5b CHAIN_TERMINAL reason, no inadmissible member                   expect FAIL rc=1  OK
+       caught by: - an arm reports CHAIN_TERMINAL but no terminal observation was recorded
+  6  one arm deleted                                                 expect FAIL rc=1  OK
+       caught by: - cover arms: the key set differs from R1 (missing ['L'], extra [])
+  7  a family member missing from certify_risks                      expect FAIL rc=1  OK
+       caught by: - certify_risks policies: the key set differs from R1 (missing ['overlay|t[0.066,0.3666]|b0.3|A0.7|v[0.4]|B0'], extra [])
+  8  a risk off the audited population                               expect FAIL rc=1  OK
+       caught by: - crop|t[0.066,0.3666]|b0.3|A0.55|v[0.4]|B0|fire: evaluated off the audited population (count or membership digest)
+  9  a CAPABLE bit flipped in the run                                expect FAIL rc=1  OK
+       caught by: - L|crop|fire: the run's capable_registered=True but the definition gives False
+  10 h*_ref recomputed from n_cert                                   expect FAIL rc=1  OK
+       caught by: - h*_ref in the run is not max(0, alpha - r*_ref) for ['fire', 'smoke']
+  12 a certified member the sequence does not earn                   expect FAIL rc=1  OK
+       caught by: - arm B: certified members the fixed sequence does not earn: ['crop|t[0.066,0.3666]|b0.2|A0.55|v[0.4]|B0']
+  12b a member the sequence earns, quietly uncertified               expect FAIL rc=1  OK
+       caught by: - arm B: members the fixed sequence earns but that are not certified: ['crop|t[0.066,0.3666]|b0.2|A0.7|v[0.4]|B0']
+  13 a p_joint zeroed (true value 5.5e-13)                           expect FAIL rc=1  OK
+       caught by: - crop|t[0.066,0.3666]|b0.2|A0.55|v[0.4]|B0: p_joint is 0.0, recomputes to 6.1189308067e-13
+  13b a p_joint moved, certified prefix unchanged                    expect FAIL rc=1  OK
+       caught by: - crop|t[0.066,0.3666]|b0.2|A0.7|v[0.4]|B0: p_joint is 0.024, recomputes to 6.1189308067e-13
+  14 no refusal authority recorded at all                            expect FAIL rc=1  OK
+       caught by: - the run report carries no `chain_terminal_observed` field: the refusal is still conditioned on the pair mapping rather than on the observation
+  14c the v2.4.8 scenario: terminal chain dropped, verdict survived  expect FAIL rc=1  OK
+       caught by: - certification[B]: the engine's cover id or chains differ from R1
+  14b REFUSED with an empty pair mapping (v2.4.9 shape)              expect PASS rc=0  OK
+  11 R1 bits check, clean receipt                                    expect PASS rc=0  OK
+  11b R1's own CAPABLE bit contradicts its Gamma_sel                 expect FAIL rc=1  OK
+       caught by: - L|crop|fire: R1 capable=True but the definition gives False
+  11c two arms share a chain member                                  expect FAIL rc=1  OK
+       caught by: - two arms share a chain member: [('B', 'L')]
+
+========================================================================
+SELFTEST PASSES: 24 of 24 cases behaved as required.
+  the clean fixture passes; the exact r*_cert == r*_ref coincidence passes and is reported as a
+  diagnostic; and each planted defect is refused by the gate that is supposed to refuse it -
+  including h*_ref recomputed from n_cert, which the removed anti-equality gate was aiming at.

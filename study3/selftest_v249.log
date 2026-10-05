@@ -1,0 +1,133 @@
+[PASS] run_all.sh: bash syntax
+[PASS] run_all.sh STAGE=codehash in a clean env (set -u: no unbound variable)
+[PASS] run_all.sh: unknown STAGE -> exit 1
+[PASS] run_all.sh: every documented STAGE exists
+[PASS] ESVA-LTT tests (test_esva)
+[PASS] ACE-LTT tests (test_ace_ltt)
+[PASS] ACE declaration decomposes into the declared chains
+[PASS] ACE chain runs from the safest candidate downwards
+[PASS] ACE declares response as the catch set, not alarm
+[PASS] ACE leaves the payload unconstrained in the dev study
+[PASS] no spanning events in a clean split
+[PASS] an event spanning two units is detected
+[PASS] registered split matches cascade.select.calibrate's rule
+[PASS] audit digests are reproducible and acquisition-independent
+[PASS] the registration counts frames and units separately
+[PASS] v2.3 refuses the Study-1 lambda family for a NEW registration
+[PASS] the refusal is about margin capacity, not about validity
+[PASS] Study 2 (b ladder) registers under v2.3
+[PASS] Study 2 records its spec version and exploratory status
+[PASS] Study 2's chain coordinate is margin capable from DESIGN-time data
+[PASS] Study 2's ladder crosses the joint boundary on the SELECT fold (Sec. 4.6)
+[PASS] Study 2 freezes thresholds and the b ladder at registration
+[PASS] a second Study-2 registration is refused
+[PASS] Study 2 run executes the registered procedure
+[PASS] the run re-derives the registered cover before testing
+[PASS] realized capacity is reported as diagnostic only
+[PASS] the run is labelled exploratory
+[PASS] a second Study-2 run is refused
+[PASS] the diagnostic is outside ANALYSIS_CODE (it can never move a registered code hash)
+[PASS] the paired diagnostic runs
+[PASS] the diagnostic carries no p-value and no decision rule
+[PASS] edge-only is the same object with the band collapsed (no calls, no hand-off)
+[PASS] the comparison is paired over the same units
+[PASS] the diagnostic labels its interval post-selection
+[PASS] a changed protocol makes the registered run refuse
+[PASS] runtime tree matches MANIFEST.sha256
+[PASS] fresh manifest verifies
+[PASS] runtime cache is not reported as a stale file
+[PASS] stale file left by an overlay unzip is detected
+[PASS] edited file is detected
+[PASS] missing manifest is not silently OK
+[PASS] grid evaluator == direct metrics (unit miss)
+[PASS] event grid evaluator == direct metrics (event miss)
+[PASS] single-risk call == explicit risk_labels
+[PASS] grid depends on the select part only
+[PASS] bonferroni uses the data-independent grid
+[PASS] head rule: recall within 1 pp -> lower escalation wins
+[PASS] head rule: split winner -> max min(fire, smoke)
+[PASS] head rule: full tie -> nms false
+[PASS] init runs
+[PASS] init shows no positive counts for calibration / sealed_test
+[PASS] protocol.yaml parses (dataset path safely quoted)
+[PASS] records before freeze (for dev)
+[PASS] before freeze: only dev labels (calibration, sealed_test, external_shift blank)
+[PASS] units / events come from frozen splits.csv
+[PASS] unit audit lists the cross-source unit (label-free)
+[PASS] cross-source duplicate cluster stays ONE unit with ONE role
+[PASS] no unit spans two roles
+[PASS] source with < min_units test units -> external_shift
+[PASS] missing detector score -> refused
+[PASS] dev mode runs before freeze
+[PASS] figures dev: TikZ .tex + .csv, reads dev_* inputs only
+[PASS] figures final before any final -> refused
+[PASS] validity before freeze -> refused
+[PASS] final before freeze -> refused
+[PASS] unseal before freeze -> refused
+[PASS] freeze with agent not produced from this detector meta -> refused
+[PASS] freeze with detector nms != protocol nms -> refused
+[PASS] freeze with runtime_end2end inconsistent with nms -> refused
+[PASS] freeze after detector CSV edited post-agent -> refused
+[PASS] fill-weights writes the meta digest into protocol.yaml
+[PASS] fill-weights keeps a snapshot of the previous protocol.yaml
+[PASS] fill-weights is idempotent for the same digest
+[PASS] fill-weights refuses to overwrite a DIFFERENT digest
+[PASS] freeze refuses a protocol digest that disagrees with the meta
+[PASS] freeze with matching metas and CSVs (weights pre-filled)
+[PASS] fill-weights refused after freeze
+[PASS] freeze filled hashes into protocol.yaml
+[PASS] validity on pre-freeze records -> refused
+[PASS] after freeze: dev + calibration labels, sealed_test and external_shift blank
+[PASS] validity after freeze runs
+[PASS] detector CSV edited after freeze -> records and unseal refused
+[PASS] agent CSV edited after freeze -> records and unseal refused
+[PASS] unseal after freeze: labels for every role
+[PASS] receipt created complete and atomically (no temp files left, valid JSON)
+[PASS] receipt: state unsealed with the records_sha256 of the unsealed file
+[PASS] second --unseal to another file -> refused
+[PASS] --unseal --resume to another file -> refused
+[PASS] sealed build over the receipt's records file -> refused
+[PASS] --unseal --resume, same file: allowed, logged, same hash
+[PASS] final with records other than the receipt's -> refused
+[PASS] final with sealed records -> refused
+[PASS] crashed final leaves receipt state running
+[PASS] final after crash without --resume -> refused
+[PASS] final --resume with another out-dir -> refused
+[PASS] --unseal --resume while final is running -> refused
+[PASS] final --resume (same out-dir): done, logged, partial output renamed not deleted
+[PASS] final runs once, with per-risk bootstrap CIs
+[PASS] verify-final: receipt, final.md, final.json, records, lock all match
+[PASS] figures final (TikZ) written from final.json only (hash = receipt)
+[PASS] TikZ figures compile (pdflatex preview of every figure)
+[PASS] figures final re-run: allowed, receipt untouched
+[PASS] verify-final on an edited final.json -> FAILED
+[PASS] figures final on an edited final.json -> refused
+[PASS] second final (same out-dir) -> refused
+[PASS] second final (other out-dir) -> refused by protocol receipt
+[PASS] receipt records state done + final.md hash
+[PASS] --unseal --resume after done -> refused
+[PASS] FLAME2 reported in external shift, not in sealed test
+[PASS] edited records -> refused
+[PASS] pure cloud: freeze without --agent-plain -> refused
+[PASS] pure cloud: freeze with --agent-plain
+[PASS] pure cloud: final has pure_cloud_plain with plain-agent latency (250 ms, no detector)
+[PASS] edited protocol.yaml -> refused
+[PASS] analysis_code_sha256 is deterministic (copy == original)
+[PASS] freeze writes analysis_code_sha256 into the lock
+[PASS] code lock: post-freeze records with unchanged code
+[PASS] policy.py 1 byte changed -> records refused
+[PASS] policy.py 1 byte changed -> validity refused
+[PASS] policy.py 1 byte changed -> --unseal refused, no receipt created
+[PASS] code restored byte-exactly -> --unseal allowed
+[PASS] policy.py 1 byte changed -> final refused, receipt stays 'unsealed'
+[PASS] code restored -> final runs (figures made automatically only via run_all)
+[PASS] figures.py changed after freeze -> figures final refused without the flag
+[PASS] --post-freeze-figure-fix: allowed and recorded in the manifest
+[PASS] figures.py changed -> validity still refused (figure code is in analysis_code_sha256)
+[PASS] policy.py changed -> figures final refused even with the flag
+[PASS] real package untouched
+
+skipped (environment): ['RAVC-LTT tests (test_adaptive_view): cv2 not installed']
+
+128/128 checks passed, 1 skipped
+SELFTEST OK

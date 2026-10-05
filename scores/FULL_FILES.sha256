@@ -1,0 +1,3 @@
+82997578e96f7ebe556c2e9f29bfecac27faa9db5761bce79636d3529af30d94  runs/cascade/det_yolo26-base_s0_nms-none.csv
+137638bde4e8b79e8007d9ff7b2b0187de294548d9d3d6c9e5c31dfb92f5264a  runs/cascade/agent_Qwen2.5-VL-3B-Instruct-none-crop_yolo26-base_s0_nms-none.csv
+3a36f69397478122ef66b18bb3acf44eb774cc8ff101abd3ceab0ea81caf3908  runs/cascade/agent_Qwen2.5-VL-3B-Instruct-none-overlay_yolo26-base_s0_nms-none.csv

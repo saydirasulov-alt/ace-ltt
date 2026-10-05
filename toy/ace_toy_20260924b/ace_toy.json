@@ -1,0 +1,1256 @@
+{
+ "utc": "2026-09-24T07:11:48Z",
+ "kind": "generic synthetic illustration of ACE-LTT; not an empirical result",
+ "registration": "ace_ltt_toy_generic/v1",
+ "generator": {
+  "n_units": 900,
+  "seed": 20260925,
+  "frames_per_unit": [
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "events_per_unit": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   3
+  ],
+  "frames_per_event": [
+   1,
+   2,
+   3
+  ],
+  "s_positive": [
+   0.46,
+   0.15
+  ],
+  "s_negative": [
+   0.15,
+   0.1
+  ],
+  "g_gain": {
+   "a1": 0.3,
+   "a2": 0.14
+  },
+  "g_base": [
+   0.4,
+   0.2
+  ],
+  "bytes_per_escalated_frame": {
+   "a1": 22.0,
+   "a2": 41.0
+  },
+  "band": [
+   0.2,
+   0.36
+  ],
+  "A": 0.55,
+  "b_ladder": [
+   0.0,
+   0.15,
+   0.3,
+   0.45
+  ],
+  "lambda_S": 0.0,
+  "select_fraction": 0.3
+ },
+ "n_frames": 5392,
+ "alpha": 0.05,
+ "beta": 0.05,
+ "delta": 0.1,
+ "n_select_units": 270,
+ "n_certify_units": 630,
+ "nominal": {
+  "cover_id": "c5eae7965d30c72977afbb74eaf1c21c433d224ed4b5b8ee8fc778b8492e3465",
+  "M": 2,
+  "delta_m": 0.05,
+  "audit": {
+   "n_miss_units": 415,
+   "n_budget_units": 630,
+   "membership_sha256": "388adb8c929aa5c8a5886dc7dbb8356c29c558b5fc96f504decdc21f5b0c3add"
+  },
+  "n_min": 59,
+  "r_star": {
+   "a1": 0.02650602385401726,
+   "a2": 0.02650602385401726
+  },
+  "g_star": {
+   "a1": 0.023493976145982743,
+   "a2": 0.023493976145982743
+  },
+  "select": [
+   {
+    "policy": "a1|b=0",
+    "risk_select": 0.011695906432748537,
+    "n_units": 171,
+    "payload_select": 0.0,
+    "joint_slack": 0.0033512995518438973,
+    "fa": 0.08227848101265822,
+    "calls": 0.2662613981762918,
+    "handoff": 0.16899696048632218
+   },
+   {
+    "policy": "a1|b=0.15",
+    "risk_select": 0.011695906432748537,
+    "n_units": 171,
+    "payload_select": 0.0,
+    "joint_slack": 0.0033512995518438973,
+    "fa": 0.08227848101265822,
+    "calls": 0.2662613981762918,
+    "handoff": 0.14711246200607903
+   },
+   {
+    "policy": "a1|b=0.3",
+    "risk_select": 0.011695906432748537,
+    "n_units": 171,
+    "payload_select": 0.0,
+    "joint_slack": 0.0033512995518438973,
+    "fa": 0.08227848101265822,
+    "calls": 0.2662613981762918,
+    "handoff": 0.10638297872340426
+   },
+   {
+    "policy": "a1|b=0.45",
+    "risk_select": 0.016569200779727095,
+    "n_units": 171,
+    "payload_select": 0.0,
+    "joint_slack": -0.00152199479513466,
+    "fa": 0.08227848101265822,
+    "calls": 0.2662613981762918,
+    "handoff": 0.043161094224924014
+   },
+   {
+    "policy": "a2|b=0",
+    "risk_select": 0.011695906432748537,
+    "n_units": 171,
+    "payload_select": 0.022222222222222223,
+    "joint_slack": 0.0033512995518438973,
+    "fa": 0.081374321880651,
+    "calls": 0.2662613981762918,
+    "handoff": 0.18541033434650456
+   },
+   {
+    "policy": "a2|b=0.15",
+    "risk_select": 0.014619883040935672,
+    "n_units": 171,
+    "payload_select": 0.022222222222222223,
+    "joint_slack": 0.0004273229436567629,
+    "fa": 0.081374321880651,
+    "calls": 0.2662613981762918,
+    "handoff": 0.16170212765957448
+   },
+   {
+    "policy": "a2|b=0.3",
+    "risk_select": 0.022417153996101363,
+    "n_units": 171,
+    "payload_select": 0.022222222222222223,
+    "joint_slack": -0.007369948011508929,
+    "fa": 0.081374321880651,
+    "calls": 0.2662613981762918,
+    "handoff": 0.11671732522796352
+   },
+   {
+    "policy": "a2|b=0.45",
+    "risk_select": 0.03996101364522417,
+    "n_units": 171,
+    "payload_select": 0.022222222222222223,
+    "joint_slack": -0.024913807660631733,
+    "fa": 0.081374321880651,
+    "calls": 0.2662613981762918,
+    "handoff": 0.044984802431610946
+   }
+  ],
+  "capacity": {
+   "a1": {
+    "miss": {
+     "n_units": 171,
+     "boundary": 0.015047205984592435,
+     "select_bar": 0.015047205984592435,
+     "required_margin": 0.0,
+     "capacity": 0.0935672514619883,
+     "source": "design",
+     "basis": "select fold, toy generator",
+     "usable_for_registration": true,
+     "status": "MARGIN_CAPABLE"
+    }
+   },
+   "a2": {
+    "miss": {
+     "n_units": 171,
+     "boundary": 0.015047205984592435,
+     "select_bar": 0.015047205984592435,
+     "required_margin": 0.0,
+     "capacity": 0.0935672514619883,
+     "source": "design",
+     "basis": "select fold, toy generator",
+     "usable_for_registration": true,
+     "status": "MARGIN_CAPABLE"
+    }
+   }
+  },
+  "spanning": {
+   "a1": {
+    "status": "BOUNDARY_SPANNING",
+    "n": 4,
+    "max_joint_slack": 0.0033512995518438973,
+    "min_joint_slack": -0.00152199479513466,
+    "safe_endpoint_feasible": true,
+    "reason": ""
+   },
+   "a2": {
+    "status": "BOUNDARY_SPANNING",
+    "n": 4,
+    "max_joint_slack": 0.0033512995518438973,
+    "min_joint_slack": -0.024913807660631733,
+    "safe_endpoint_feasible": true,
+    "reason": ""
+   }
+  },
+  "checklist": [
+   {
+    "item": "loss_by_loss_monotonicity",
+    "ok": true,
+    "detail": "miss: catch_set=response, agg=unit_mean_over_events, w=uniform, empty=exclude_unit, lemma=L-toy-1: unit_mean_over_events is non-increasing in the response set"
+   },
+   {
+    "item": "deterministic_chain_cover",
+    "ok": true,
+    "detail": "dilworth_min_cover_kuhn/v1+greedy_above_400: M=2, permutation-invariant=True, id=c5eae7965d30c729"
+   },
+   {
+    "item": "predeclared_delta_plan",
+    "ok": true,
+    "detail": "registration=ace_ltt_toy_generic/v1, bound to this cover=True, every chain declared=True"
+   },
+   {
+    "item": "policy_independent_audit_membership",
+    "ok": true,
+    "detail": "count and membership identical across the whole family"
+   },
+   {
+    "item": "fixed_payload_semantics",
+    "ok": true,
+    "detail": "registration=ace_ltt_toy_generic/v1, unit=split_group (a unit is never split across folds), B0 grid=[30.0], beta=0.05, norm=KiB_per_evaluated_frame"
+   },
+   {
+    "item": "weights_hash_populated",
+    "ok": true,
+    "detail": "detector.weights_sha256 = 5db95875f1a547d7..."
+   },
+   {
+    "item": "chain_margin_capacity",
+    "ok": true,
+    "detail": "miss: n=415, r*=0.0265, bar=0.0150, h*=0.0000, Gamma=0.0936 [design] -> MARGIN_CAPABLE"
+   },
+   {
+    "item": "chain_boundary_spanning",
+    "ok": true,
+    "detail": "a1: BOUNDARY_SPANNING (max +0.0034, min -0.0015, safe endpoint feasible=True); a2: BOUNDARY_SPANNING (max +0.0034, min -0.0249, safe endpoint feasible=True)"
+   }
+  ],
+  "certify": [
+   {
+    "policy": "a1|b=0",
+    "risk_certify": 0.02128514056224899,
+    "n_units": 415,
+    "payload_certify": 0.0,
+    "p_joint": 0.007276001508643224,
+    "certified": true,
+    "utility": 1.7316824387427106,
+    "fa": 0.08403026682596575,
+    "calls": 0.2572724846543902,
+    "handoff": 0.15852682145716573
+   },
+   {
+    "policy": "a1|b=0.15",
+    "risk_certify": 0.02128514056224899,
+    "n_units": 415,
+    "payload_certify": 0.0,
+    "p_joint": 0.007276001508643224,
+    "certified": true,
+    "utility": 1.6441457427192252,
+    "fa": 0.08403026682596575,
+    "calls": 0.2572724846543902,
+    "handoff": 0.13664264745129437
+   },
+   {
+    "policy": "a1|b=0.3",
+    "risk_certify": 0.02369477911646586,
+    "n_units": 415,
+    "payload_certify": 0.0,
+    "p_joint": 0.016723502200380203,
+    "certified": true,
+    "utility": 1.4968278884357984,
+    "fa": 0.08403026682596575,
+    "calls": 0.2572724846543902,
+    "handoff": 0.09981318388043768
+   },
+   {
+    "policy": "a1|b=0.45",
+    "risk_certify": 0.026907630522088354,
+    "n_units": 415,
+    "payload_certify": 0.0,
+    "p_joint": 0.062047028801674294,
+    "certified": false,
+    "utility": 1.2587707760792466,
+    "fa": 0.08403026682596575,
+    "calls": 0.2572724846543902,
+    "handoff": 0.04029890579129971
+   },
+   {
+    "policy": "a2|b=0",
+    "risk_certify": 0.02128514056224899,
+    "n_units": 415,
+    "payload_certify": 0.023809523809523808,
+    "p_joint": 0.007276001508643224,
+    "certified": true,
+    "utility": 1.781817010757152,
+    "fa": 0.07964954201513341,
+    "calls": 0.2572724846543902,
+    "handoff": 0.18201227648785695
+   },
+   {
+    "policy": "a2|b=0.15",
+    "risk_certify": 0.023293172690763052,
+    "n_units": 415,
+    "payload_certify": 0.023809523809523808,
+    "p_joint": 0.016723502200380203,
+    "certified": true,
+    "utility": 1.6953478354168798,
+    "fa": 0.07964954201513341,
+    "calls": 0.2572724846543902,
+    "handoff": 0.1603949826527889
+   },
+   {
+    "policy": "a2|b=0.3",
+    "risk_certify": 0.028514056224899595,
+    "n_units": 415,
+    "payload_certify": 0.023809523809523808,
+    "p_joint": 0.06747021329450026,
+    "certified": false,
+    "utility": 1.528814608835615,
+    "fa": 0.07964954201513341,
+    "calls": 0.2572724846543902,
+    "handoff": 0.11876167600747264
+   },
+   {
+    "policy": "a2|b=0.45",
+    "risk_certify": 0.046586345381526104,
+    "n_units": 415,
+    "payload_certify": 0.023809523809523808,
+    "p_joint": null,
+    "certified": false,
+    "utility": 1.2395165036848277,
+    "fa": 0.07964954201513341,
+    "calls": 0.2572724846543902,
+    "handoff": 0.04643714971977582
+   }
+  ],
+  "reasons": [],
+  "operating_point": {
+   "policy": "a1|b=0.3",
+   "utility": 1.4968278884357984,
+   "n_certified": 5,
+   "partial": false,
+   "front": [
+    {
+     "policy": "a1|b=0.3",
+     "utility": 1.4968278884357984
+    },
+    {
+     "policy": "a1|b=0.15",
+     "utility": 1.6441457427192252
+    },
+    {
+     "policy": "a2|b=0.15",
+     "utility": 1.6953478354168798
+    },
+    {
+     "policy": "a1|b=0",
+     "utility": 1.7316824387427106
+    },
+    {
+     "policy": "a2|b=0",
+     "utility": 1.781817010757152
+    }
+   ],
+   "p_joint": 0.016723502200380203
+  }
+ },
+ "ordering": {
+  "grid": [
+   0.0,
+   0.01,
+   0.02,
+   0.03,
+   0.04,
+   0.05,
+   0.06,
+   0.07,
+   0.08,
+   0.09,
+   0.1,
+   0.11,
+   0.12,
+   0.13,
+   0.14,
+   0.15,
+   0.16,
+   0.17,
+   0.18,
+   0.19,
+   0.2,
+   0.21,
+   0.22,
+   0.23,
+   0.24,
+   0.25,
+   0.26,
+   0.27,
+   0.28,
+   0.29,
+   0.3,
+   0.31,
+   0.32,
+   0.33,
+   0.34,
+   0.35,
+   0.36,
+   0.37,
+   0.38,
+   0.39,
+   0.4,
+   0.41,
+   0.42,
+   0.43,
+   0.44,
+   0.45,
+   0.46,
+   0.47,
+   0.48,
+   0.49,
+   0.5,
+   0.51,
+   0.52,
+   0.53,
+   0.54,
+   0.55
+  ],
+  "ladder": [
+   {
+    "policy": "a2|b=0.00",
+    "risk_select": 0.011695906432748537,
+    "cost_select": 0.18541033434650456,
+    "risk_certify": 0.02128514056224899
+   },
+   {
+    "policy": "a2|b=0.01",
+    "risk_select": 0.011695906432748537,
+    "cost_select": 0.18054711246200608,
+    "risk_certify": 0.022088353413654616
+   },
+   {
+    "policy": "a2|b=0.02",
+    "risk_select": 0.011695906432748537,
+    "cost_select": 0.17933130699088146,
+    "risk_certify": 0.022088353413654616
+   },
+   {
+    "policy": "a2|b=0.03",
+    "risk_select": 0.011695906432748537,
+    "cost_select": 0.17811550151975683,
+    "risk_certify": 0.022088353413654616
+   },
+   {
+    "policy": "a2|b=0.04",
+    "risk_select": 0.011695906432748537,
+    "cost_select": 0.17811550151975683,
+    "risk_certify": 0.022088353413654616
+   },
+   {
+    "policy": "a2|b=0.05",
+    "risk_select": 0.011695906432748537,
+    "cost_select": 0.17750759878419453,
+    "risk_certify": 0.022088353413654616
+   },
+   {
+    "policy": "a2|b=0.06",
+    "risk_select": 0.011695906432748537,
+    "cost_select": 0.1762917933130699,
+    "risk_certify": 0.022088353413654616
+   },
+   {
+    "policy": "a2|b=0.07",
+    "risk_select": 0.011695906432748537,
+    "cost_select": 0.1756838905775076,
+    "risk_certify": 0.022088353413654616
+   },
+   {
+    "policy": "a2|b=0.08",
+    "risk_select": 0.011695906432748537,
+    "cost_select": 0.17507598784194528,
+    "risk_certify": 0.022088353413654616
+   },
+   {
+    "policy": "a2|b=0.09",
+    "risk_select": 0.011695906432748537,
+    "cost_select": 0.17446808510638298,
+    "risk_certify": 0.022088353413654616
+   },
+   {
+    "policy": "a2|b=0.10",
+    "risk_select": 0.011695906432748537,
+    "cost_select": 0.17325227963525835,
+    "risk_certify": 0.022088353413654616
+   },
+   {
+    "policy": "a2|b=0.11",
+    "risk_select": 0.014619883040935672,
+    "cost_select": 0.17082066869300913,
+    "risk_certify": 0.022088353413654616
+   },
+   {
+    "policy": "a2|b=0.12",
+    "risk_select": 0.014619883040935672,
+    "cost_select": 0.16838905775075988,
+    "risk_certify": 0.022088353413654616
+   },
+   {
+    "policy": "a2|b=0.13",
+    "risk_select": 0.014619883040935672,
+    "cost_select": 0.1641337386018237,
+    "risk_certify": 0.023293172690763052
+   },
+   {
+    "policy": "a2|b=0.14",
+    "risk_select": 0.014619883040935672,
+    "cost_select": 0.1635258358662614,
+    "risk_certify": 0.023293172690763052
+   },
+   {
+    "policy": "a2|b=0.15",
+    "risk_select": 0.014619883040935672,
+    "cost_select": 0.16170212765957448,
+    "risk_certify": 0.023293172690763052
+   },
+   {
+    "policy": "a2|b=0.16",
+    "risk_select": 0.014619883040935672,
+    "cost_select": 0.15987841945288753,
+    "risk_certify": 0.023293172690763052
+   },
+   {
+    "policy": "a2|b=0.17",
+    "risk_select": 0.014619883040935672,
+    "cost_select": 0.15562310030395138,
+    "risk_certify": 0.023293172690763052
+   },
+   {
+    "policy": "a2|b=0.18",
+    "risk_select": 0.014619883040935672,
+    "cost_select": 0.1519756838905775,
+    "risk_certify": 0.023293172690763052
+   },
+   {
+    "policy": "a2|b=0.19",
+    "risk_select": 0.014619883040935672,
+    "cost_select": 0.15015197568389058,
+    "risk_certify": 0.023293172690763052
+   },
+   {
+    "policy": "a2|b=0.20",
+    "risk_select": 0.014619883040935672,
+    "cost_select": 0.14832826747720365,
+    "risk_certify": 0.023293172690763052
+   },
+   {
+    "policy": "a2|b=0.21",
+    "risk_select": 0.016569200779727095,
+    "cost_select": 0.14650455927051673,
+    "risk_certify": 0.023293172690763052
+   },
+   {
+    "policy": "a2|b=0.22",
+    "risk_select": 0.016569200779727095,
+    "cost_select": 0.14407294832826747,
+    "risk_certify": 0.023293172690763052
+   },
+   {
+    "policy": "a2|b=0.23",
+    "risk_select": 0.016569200779727095,
+    "cost_select": 0.14164133738601822,
+    "risk_certify": 0.025702811244979917
+   },
+   {
+    "policy": "a2|b=0.24",
+    "risk_select": 0.016569200779727095,
+    "cost_select": 0.13799392097264437,
+    "risk_certify": 0.025702811244979917
+   },
+   {
+    "policy": "a2|b=0.25",
+    "risk_select": 0.016569200779727095,
+    "cost_select": 0.13434650455927052,
+    "risk_certify": 0.025702811244979917
+   },
+   {
+    "policy": "a2|b=0.26",
+    "risk_select": 0.01949317738791423,
+    "cost_select": 0.12948328267477205,
+    "risk_certify": 0.025702811244979917
+   },
+   {
+    "policy": "a2|b=0.27",
+    "risk_select": 0.01949317738791423,
+    "cost_select": 0.1264437689969605,
+    "risk_certify": 0.025702811244979917
+   },
+   {
+    "policy": "a2|b=0.28",
+    "risk_select": 0.01949317738791423,
+    "cost_select": 0.12279635258358662,
+    "risk_certify": 0.025702811244979917
+   },
+   {
+    "policy": "a2|b=0.29",
+    "risk_select": 0.01949317738791423,
+    "cost_select": 0.11854103343465046,
+    "risk_certify": 0.027710843373493974
+   },
+   {
+    "policy": "a2|b=0.30",
+    "risk_select": 0.022417153996101363,
+    "cost_select": 0.11671732522796352,
+    "risk_certify": 0.028514056224899595
+   },
+   {
+    "policy": "a2|b=0.31",
+    "risk_select": 0.022417153996101363,
+    "cost_select": 0.1094224924012158,
+    "risk_certify": 0.028514056224899595
+   },
+   {
+    "policy": "a2|b=0.32",
+    "risk_select": 0.022417153996101363,
+    "cost_select": 0.10820668693009118,
+    "risk_certify": 0.030923694779116464
+   },
+   {
+    "policy": "a2|b=0.33",
+    "risk_select": 0.024366471734892783,
+    "cost_select": 0.1033434650455927,
+    "risk_certify": 0.031726907630522085
+   },
+   {
+    "policy": "a2|b=0.34",
+    "risk_select": 0.027290448343079917,
+    "cost_select": 0.09787234042553192,
+    "risk_certify": 0.031726907630522085
+   },
+   {
+    "policy": "a2|b=0.35",
+    "risk_select": 0.038011695906432746,
+    "cost_select": 0.09057750759878419,
+    "risk_certify": 0.03413654618473896
+   },
+   {
+    "policy": "a2|b=0.36",
+    "risk_select": 0.038011695906432746,
+    "cost_select": 0.08449848024316109,
+    "risk_certify": 0.03413654618473896
+   },
+   {
+    "policy": "a2|b=0.37",
+    "risk_select": 0.038011695906432746,
+    "cost_select": 0.0790273556231003,
+    "risk_certify": 0.03654618473895582
+   },
+   {
+    "policy": "a2|b=0.38",
+    "risk_select": 0.038011695906432746,
+    "cost_select": 0.07477203647416414,
+    "risk_certify": 0.040160642570281124
+   },
+   {
+    "policy": "a2|b=0.39",
+    "risk_select": 0.038011695906432746,
+    "cost_select": 0.06990881458966565,
+    "risk_certify": 0.04136546184738956
+   },
+   {
+    "policy": "a2|b=0.40",
+    "risk_select": 0.038011695906432746,
+    "cost_select": 0.0668693009118541,
+    "risk_certify": 0.04216867469879518
+   },
+   {
+    "policy": "a2|b=0.41",
+    "risk_select": 0.038011695906432746,
+    "cost_select": 0.06382978723404255,
+    "risk_certify": 0.04417670682730923
+   },
+   {
+    "policy": "a2|b=0.42",
+    "risk_select": 0.038011695906432746,
+    "cost_select": 0.06139817629179331,
+    "risk_certify": 0.04417670682730923
+   },
+   {
+    "policy": "a2|b=0.43",
+    "risk_select": 0.03996101364522417,
+    "cost_select": 0.05592705167173252,
+    "risk_certify": 0.04417670682730923
+   },
+   {
+    "policy": "a2|b=0.44",
+    "risk_select": 0.03996101364522417,
+    "cost_select": 0.05167173252279635,
+    "risk_certify": 0.04538152610441767
+   },
+   {
+    "policy": "a2|b=0.45",
+    "risk_select": 0.03996101364522417,
+    "cost_select": 0.044984802431610946,
+    "risk_certify": 0.046586345381526104
+   },
+   {
+    "policy": "a2|b=0.46",
+    "risk_select": 0.03996101364522417,
+    "cost_select": 0.04072948328267477,
+    "risk_certify": 0.046586345381526104
+   },
+   {
+    "policy": "a2|b=0.47",
+    "risk_select": 0.03996101364522417,
+    "cost_select": 0.03708206686930091,
+    "risk_certify": 0.04899598393574297
+   },
+   {
+    "policy": "a2|b=0.48",
+    "risk_select": 0.03996101364522417,
+    "cost_select": 0.03100303951367781,
+    "risk_certify": 0.05220883534136546
+   },
+   {
+    "policy": "a2|b=0.49",
+    "risk_select": 0.03996101364522417,
+    "cost_select": 0.02917933130699088,
+    "risk_certify": 0.054618473895582324
+   },
+   {
+    "policy": "a2|b=0.50",
+    "risk_select": 0.04580896686159844,
+    "cost_select": 0.023100303951367782,
+    "risk_certify": 0.054618473895582324
+   },
+   {
+    "policy": "a2|b=0.51",
+    "risk_select": 0.04580896686159844,
+    "cost_select": 0.0182370820668693,
+    "risk_certify": 0.054618473895582324
+   },
+   {
+    "policy": "a2|b=0.52",
+    "risk_select": 0.048732943469785565,
+    "cost_select": 0.01094224924012158,
+    "risk_certify": 0.054618473895582324
+   },
+   {
+    "policy": "a2|b=0.53",
+    "risk_select": 0.050682261208577,
+    "cost_select": 0.00729483282674772,
+    "risk_certify": 0.05582329317269076
+   },
+   {
+    "policy": "a2|b=0.54",
+    "risk_select": 0.050682261208577,
+    "cost_select": 0.00303951367781155,
+    "risk_certify": 0.06024096385542168
+   },
+   {
+    "policy": "a2|b=0.55",
+    "risk_select": 0.050682261208577,
+    "cost_select": 0.0,
+    "risk_certify": 0.06144578313253011
+   }
+  ],
+  "tie_groups": {
+   "0.011696": [
+    "a2|b=0.00",
+    "a2|b=0.01",
+    "a2|b=0.02",
+    "a2|b=0.03",
+    "a2|b=0.04",
+    "a2|b=0.05",
+    "a2|b=0.06",
+    "a2|b=0.07",
+    "a2|b=0.08",
+    "a2|b=0.09",
+    "a2|b=0.10"
+   ],
+   "0.014620": [
+    "a2|b=0.11",
+    "a2|b=0.12",
+    "a2|b=0.13",
+    "a2|b=0.14",
+    "a2|b=0.15",
+    "a2|b=0.16",
+    "a2|b=0.17",
+    "a2|b=0.18",
+    "a2|b=0.19",
+    "a2|b=0.20"
+   ],
+   "0.016569": [
+    "a2|b=0.21",
+    "a2|b=0.22",
+    "a2|b=0.23",
+    "a2|b=0.24",
+    "a2|b=0.25"
+   ],
+   "0.019493": [
+    "a2|b=0.26",
+    "a2|b=0.27",
+    "a2|b=0.28",
+    "a2|b=0.29"
+   ],
+   "0.022417": [
+    "a2|b=0.30",
+    "a2|b=0.31",
+    "a2|b=0.32"
+   ],
+   "0.038012": [
+    "a2|b=0.35",
+    "a2|b=0.36",
+    "a2|b=0.37",
+    "a2|b=0.38",
+    "a2|b=0.39",
+    "a2|b=0.40",
+    "a2|b=0.41",
+    "a2|b=0.42"
+   ],
+   "0.039961": [
+    "a2|b=0.43",
+    "a2|b=0.44",
+    "a2|b=0.45",
+    "a2|b=0.46",
+    "a2|b=0.47",
+    "a2|b=0.48",
+    "a2|b=0.49"
+   ],
+   "0.045809": [
+    "a2|b=0.50",
+    "a2|b=0.51"
+   ],
+   "0.050682": [
+    "a2|b=0.53",
+    "a2|b=0.54",
+    "a2|b=0.55"
+   ]
+  },
+  "cost": "hand-off rate on the select fold (operator load)",
+  "full_grid_ACE": {
+   "family": [
+    "a2|b=0.00",
+    "a2|b=0.01",
+    "a2|b=0.02",
+    "a2|b=0.03",
+    "a2|b=0.04",
+    "a2|b=0.05",
+    "a2|b=0.06",
+    "a2|b=0.07",
+    "a2|b=0.08",
+    "a2|b=0.09",
+    "a2|b=0.10",
+    "a2|b=0.11",
+    "a2|b=0.12",
+    "a2|b=0.13",
+    "a2|b=0.14",
+    "a2|b=0.15",
+    "a2|b=0.16",
+    "a2|b=0.17",
+    "a2|b=0.18",
+    "a2|b=0.19",
+    "a2|b=0.20",
+    "a2|b=0.21",
+    "a2|b=0.22",
+    "a2|b=0.23",
+    "a2|b=0.24",
+    "a2|b=0.25",
+    "a2|b=0.26",
+    "a2|b=0.27",
+    "a2|b=0.28",
+    "a2|b=0.29",
+    "a2|b=0.30",
+    "a2|b=0.31",
+    "a2|b=0.32",
+    "a2|b=0.33",
+    "a2|b=0.34",
+    "a2|b=0.35",
+    "a2|b=0.36",
+    "a2|b=0.37",
+    "a2|b=0.38",
+    "a2|b=0.39",
+    "a2|b=0.40",
+    "a2|b=0.41",
+    "a2|b=0.42",
+    "a2|b=0.43",
+    "a2|b=0.44",
+    "a2|b=0.45",
+    "a2|b=0.46",
+    "a2|b=0.47",
+    "a2|b=0.48",
+    "a2|b=0.49",
+    "a2|b=0.50",
+    "a2|b=0.51",
+    "a2|b=0.52",
+    "a2|b=0.53",
+    "a2|b=0.54",
+    "a2|b=0.55"
+   ],
+   "M": 1,
+   "delta_m": 0.1,
+   "certified": [
+    "a2|b=0.00",
+    "a2|b=0.01",
+    "a2|b=0.02",
+    "a2|b=0.03",
+    "a2|b=0.04",
+    "a2|b=0.05",
+    "a2|b=0.06",
+    "a2|b=0.07",
+    "a2|b=0.08",
+    "a2|b=0.09",
+    "a2|b=0.10",
+    "a2|b=0.11",
+    "a2|b=0.12",
+    "a2|b=0.13",
+    "a2|b=0.14",
+    "a2|b=0.15",
+    "a2|b=0.16",
+    "a2|b=0.17",
+    "a2|b=0.18",
+    "a2|b=0.19",
+    "a2|b=0.20",
+    "a2|b=0.21",
+    "a2|b=0.22",
+    "a2|b=0.23",
+    "a2|b=0.24",
+    "a2|b=0.25",
+    "a2|b=0.26",
+    "a2|b=0.27",
+    "a2|b=0.28",
+    "a2|b=0.29",
+    "a2|b=0.30",
+    "a2|b=0.31"
+   ],
+   "reasons": [],
+   "p_joint": {
+    "a2|b=0.00": 0.007276001508643224,
+    "a2|b=0.01": 0.014080856023675052,
+    "a2|b=0.02": 0.014080856023675052,
+    "a2|b=0.03": 0.014080856023675052,
+    "a2|b=0.04": 0.014080856023675052,
+    "a2|b=0.05": 0.014080856023675052,
+    "a2|b=0.06": 0.014080856023675052,
+    "a2|b=0.07": 0.014080856023675052,
+    "a2|b=0.08": 0.014080856023675052,
+    "a2|b=0.09": 0.014080856023675052,
+    "a2|b=0.10": 0.014080856023675052,
+    "a2|b=0.11": 0.014080856023675052,
+    "a2|b=0.12": 0.014080856023675052,
+    "a2|b=0.13": 0.016723502200380203,
+    "a2|b=0.14": 0.016723502200380203,
+    "a2|b=0.15": 0.016723502200380203,
+    "a2|b=0.16": 0.016723502200380203,
+    "a2|b=0.17": 0.016723502200380203,
+    "a2|b=0.18": 0.016723502200380203,
+    "a2|b=0.19": 0.016723502200380203,
+    "a2|b=0.20": 0.016723502200380203,
+    "a2|b=0.21": 0.016723502200380203,
+    "a2|b=0.22": 0.016723502200380203,
+    "a2|b=0.23": 0.03503086000015885,
+    "a2|b=0.24": 0.03503086000015885,
+    "a2|b=0.25": 0.03503086000015885,
+    "a2|b=0.26": 0.03503086000015885,
+    "a2|b=0.27": 0.03503086000015885,
+    "a2|b=0.28": 0.03503086000015885,
+    "a2|b=0.29": 0.06747021329450026,
+    "a2|b=0.30": 0.06747021329450026,
+    "a2|b=0.31": 0.06747021329450026,
+    "a2|b=0.32": 0.12039757919579813,
+    "a2|b=0.33": null,
+    "a2|b=0.34": null,
+    "a2|b=0.35": null,
+    "a2|b=0.36": null,
+    "a2|b=0.37": null,
+    "a2|b=0.38": null,
+    "a2|b=0.39": null,
+    "a2|b=0.40": null,
+    "a2|b=0.41": null,
+    "a2|b=0.42": null,
+    "a2|b=0.43": null,
+    "a2|b=0.44": null,
+    "a2|b=0.45": null,
+    "a2|b=0.46": null,
+    "a2|b=0.47": null,
+    "a2|b=0.48": null,
+    "a2|b=0.49": null,
+    "a2|b=0.50": null,
+    "a2|b=0.51": null,
+    "a2|b=0.52": null,
+    "a2|b=0.53": null,
+    "a2|b=0.54": null,
+    "a2|b=0.55": null
+   }
+  },
+  "full_grid_strict": {
+   "family": [
+    "a2|b=0.10",
+    "a2|b=0.20",
+    "a2|b=0.25",
+    "a2|b=0.29",
+    "a2|b=0.32",
+    "a2|b=0.33",
+    "a2|b=0.34",
+    "a2|b=0.42",
+    "a2|b=0.49",
+    "a2|b=0.51",
+    "a2|b=0.52",
+    "a2|b=0.55"
+   ],
+   "M": 1,
+   "delta_m": 0.1,
+   "certified": [
+    "a2|b=0.10",
+    "a2|b=0.20",
+    "a2|b=0.25",
+    "a2|b=0.29"
+   ],
+   "reasons": [],
+   "p_joint": {
+    "a2|b=0.10": 0.014080856023675052,
+    "a2|b=0.20": 0.016723502200380203,
+    "a2|b=0.25": 0.03503086000015885,
+    "a2|b=0.29": 0.06747021329450026,
+    "a2|b=0.32": 0.12039757919579813,
+    "a2|b=0.33": null,
+    "a2|b=0.34": null,
+    "a2|b=0.42": null,
+    "a2|b=0.49": null,
+    "a2|b=0.51": null,
+    "a2|b=0.52": null,
+    "a2|b=0.55": null
+   }
+  },
+  "witness": {
+   "select_risk": 0.022417154,
+   "r_star_singleton_chain": 0.028915662318468097,
+   "members": [
+    {
+     "policy": "a2|b=0.30",
+     "cost_select": 0.11671732522796352,
+     "risk_certify": 0.028514056224899595,
+     "p_joint": 0.06747021329450026
+    },
+    {
+     "policy": "a2|b=0.31",
+     "cost_select": 0.1094224924012158,
+     "risk_certify": 0.028514056224899595,
+     "p_joint": 0.06747021329450026
+    },
+    {
+     "policy": "a2|b=0.32",
+     "cost_select": 0.10820668693009118,
+     "risk_certify": 0.030923694779116464,
+     "p_joint": 0.12039757919579813
+    }
+   ],
+   "ACE": {
+    "family": [
+     "a2|b=0.30",
+     "a2|b=0.31",
+     "a2|b=0.32"
+    ],
+    "M": 1,
+    "delta_m": 0.1,
+    "certified": [
+     "a2|b=0.30",
+     "a2|b=0.31"
+    ],
+    "reasons": [],
+    "p_joint": {
+     "a2|b=0.30": 0.06747021329450026,
+     "a2|b=0.31": 0.06747021329450026,
+     "a2|b=0.32": 0.12039757919579813
+    }
+   },
+   "strict": {
+    "family": [
+     "a2|b=0.32"
+    ],
+    "M": 1,
+    "delta_m": 0.1,
+    "certified": [],
+    "reasons": [
+     "NO_REJECTION"
+    ],
+    "p_joint": {
+     "a2|b=0.32": 0.12039757919579813
+    }
+   }
+  }
+ },
+ "refusals": {
+  "C3_audit_support": {
+   "reasons": [
+    "C3_CERTIFIABILITY_AUDIT",
+    "NO_REJECTION"
+   ],
+   "certified": 0,
+   "n_min": 59,
+   "declared_units": 12
+  },
+  "C6_no_lemma": {
+   "chains_with_lemma": [
+    4,
+    4
+   ],
+   "chains_without_lemma": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "note": "without a written lemma every candidate is its own chain: M rises from 2 to 8, delta_m falls from 0.05 to 0.0125, and no fail-safe path exists"
+  },
+  "C7_payload_semantics": {
+   "reasons": [
+    "C7_FROZEN_PAYLOAD_SEMANTICS",
+    "NO_REJECTION"
+   ],
+   "certified": 0
+  }
+ },
+ "diagnostics": {
+  "delta_m": 0.05,
+  "per_acq": {
+   "a1": {
+    "n_select_units": 171,
+    "r_star_select": 0.015047205984592435,
+    "g_star_select": 0.034952794015407566,
+    "gamma_full": 0.0935672514619883,
+    "gamma_narrow": 0.01871345029239766,
+    "capacity": {
+     "bar=r*, S full": {
+      "miss": {
+       "n_units": 171,
+       "boundary": 0.015047205984592435,
+       "select_bar": 0.015047205984592435,
+       "required_margin": 0.0,
+       "capacity": 0.0935672514619883,
+       "source": "design",
+       "basis": "select fold, S = escalated-only events",
+       "usable_for_registration": true,
+       "status": "MARGIN_CAPABLE"
+      }
+     },
+     "bar=alpha, S full": {
+      "miss": {
+       "n_units": 171,
+       "boundary": 0.015047205984592435,
+       "select_bar": 0.05,
+       "required_margin": 0.034952794015407566,
+       "capacity": 0.0935672514619883,
+       "source": "design",
+       "basis": "select fold, S = escalated-only events",
+       "usable_for_registration": true,
+       "status": "MARGIN_CAPABLE"
+      }
+     },
+     "bar=alpha, S narrow": {
+      "miss": {
+       "n_units": 171,
+       "boundary": 0.015047205984592435,
+       "select_bar": 0.05,
+       "required_margin": 0.034952794015407566,
+       "capacity": 0.01871345029239766,
+       "source": "design",
+       "basis": "select fold, S restricted to a fifth of the acting events (declared variant)",
+       "usable_for_registration": true,
+       "status": "MARGIN_INCAPABLE"
+      }
+     }
+    }
+   },
+   "a2": {
+    "n_select_units": 171,
+    "r_star_select": 0.015047205984592435,
+    "g_star_select": 0.034952794015407566,
+    "gamma_full": 0.0935672514619883,
+    "gamma_narrow": 0.01871345029239766,
+    "capacity": {
+     "bar=r*, S full": {
+      "miss": {
+       "n_units": 171,
+       "boundary": 0.015047205984592435,
+       "select_bar": 0.015047205984592435,
+       "required_margin": 0.0,
+       "capacity": 0.0935672514619883,
+       "source": "design",
+       "basis": "select fold, S = escalated-only events",
+       "usable_for_registration": true,
+       "status": "MARGIN_CAPABLE"
+      }
+     },
+     "bar=alpha, S full": {
+      "miss": {
+       "n_units": 171,
+       "boundary": 0.015047205984592435,
+       "select_bar": 0.05,
+       "required_margin": 0.034952794015407566,
+       "capacity": 0.0935672514619883,
+       "source": "design",
+       "basis": "select fold, S = escalated-only events",
+       "usable_for_registration": true,
+       "status": "MARGIN_CAPABLE"
+      }
+     },
+     "bar=alpha, S narrow": {
+      "miss": {
+       "n_units": 171,
+       "boundary": 0.015047205984592435,
+       "select_bar": 0.05,
+       "required_margin": 0.034952794015407566,
+       "capacity": 0.01871345029239766,
+       "source": "design",
+       "basis": "select fold, S restricted to a fifth of the acting events (declared variant)",
+       "usable_for_registration": true,
+       "status": "MARGIN_INCAPABLE"
+      }
+     }
+    }
+   }
+  },
+  "not_spanning_subfamily": {
+   "members": [
+    "a1|b=0",
+    "a2|b=0"
+   ],
+   "status": "NOT_SPANNING",
+   "n": 2,
+   "max_joint_slack": 0.0033512995518438973,
+   "min_joint_slack": 0.0033512995518438973,
+   "safe_endpoint_feasible": true,
+   "reason": "every member on the certifiable side: the sequence has nothing to reject"
+  }
+ }
+}

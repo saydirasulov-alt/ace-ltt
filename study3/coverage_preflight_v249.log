@@ -1,0 +1,54 @@
+
+=== this preflight ===
+  ace3_uid_coverage_preflight.py         254382e5d2bc33e26dfb9a8d6aac2c03895aabc1202b2a125044794ca7af69bc
+  scope: uid field                       every file
+  scope: detector s field                dev role + calibration-select ONLY
+  never read                             labels, agent g, features, any certify or sealed row
+
+=== stage 1: role split, from splits.csv only ===
+  role / s_min                           calibration / 0.02
+  select_fraction / seed                 0.3 / 1
+  calibration units                      6045
+  select / certify units                 1814 / 4231
+  select / certify uids                  2812 / 12349
+  units per role                         [('calibration', 6045), ('dev', 5989), ('external_shift', 874), ('sealed_test', 6045)]
+  uids whose s may be read               16749  (dev 13937 + select 2812)
+  uids whose s may NOT be read           24545  (certify + sealed_test)
+
+=== (1) uid sets, metadata only ===
+  manifest.csv rows / unique             138773 / 138773
+  manifest.csv calibration uids missing  0
+  det.csv rows / unique                  42610 / 42610
+  det.csv calibration uids missing       0
+  agent[crop] rows / unique              28384 / 28384
+  agent[crop] calibration uids absent    4357  (select 1247 / certify 3110)  <- expected: s < s_min
+  agent[overlay] rows / unique           28384 / 28384
+  agent[overlay] calibration uids absent 4357  (select 1247 / certify 3110)  <- expected: s < s_min
+  crop vs overlay uid sets               IDENTICAL
+
+=== (2) producer contract, checked EXACTLY on dev + calibration-select ===
+  uids with a detector score read        16749
+  of those, s >= s_min                   10923
+  agent[crop] required but ABSENT        0   <- must be 0
+  agent[crop] present though s<s_min     0  (harmless)
+  agent[overlay] required but ABSENT     0   <- must be 0
+  agent[overlay] present though s<s_min  0  (harmless)
+
+=== (3) calibration-certify: NOT read, contract-assured ===
+  certify uids                           12349
+  of those absent from agent[crop]       3110
+  their s was read                       NO - reading a certify score before R1 is forbidden
+  basis                                  agent_vlm selects by s >= s_min over this det CSV; the agent
+                                         meta pins s_min and det_csv_sha256, and load_uids re-checks both
+  status                                 CONTRACT-ASSURED, not verified
+  if the contract is violated there      load_certify aborts AFTER R1, before the audit receipt -
+                                         a fail-closed refusal, never a silent partial fold
+
+========================================================================
+COVERAGE OK for freeze.
+  verified exactly : every dev and calibration-select uid with s >= s_min is present in both
+                     agent CSVs, and every absence there is a uid with s < s_min, which is
+                     never escalated and needs no agent score.
+  contract-assured : 3110 calibration-certify uids are absent from the agent CSVs. Their
+                     scores were NOT read. The assurance is the producer contract, pinned by the
+                     agent meta and re-checked by the loader - not a verification.

@@ -1,0 +1,195 @@
+{
+ "study": "ace_ltt_dev",
+ "registered_utc": "2026-09-23T10:31:20Z",
+ "declaration": {
+  "study": "ace_ltt_dev",
+  "question": "Does ONE registered ACE-LTT procedure, run without human intervention on one candidate family, certify the crop cascade at a veto authority that controls the source-specific risk, and decline to certify the overlay cascade, on the dev split?",
+  "acquisitions": [
+   "crop",
+   "overlay"
+  ],
+  "veto": {
+   "stratum": {
+    "kind": "small_smoke",
+    "area_max": 0.02,
+    "definition": "top smoke box area <= area_max AND s_smoke >= s_fire; label-free, from the detector boxes only"
+   },
+   "partition": [
+    "S",
+    "rest"
+   ],
+   "lambda_grid": [
+    0.0,
+    0.2,
+    0.4,
+    0.6,
+    0.8,
+    1.0
+   ],
+   "applies": "v = (S: lambda, rest: 0.0); g_v = min(1, g + v(x)). Larger lambda = more inclusive."
+  },
+  "thresholds": "(t_low, t_high, b, A) are chosen ON THE SELECT FOLD by the pre-registered objective, once per acquisition, and are NOT enumerated in the family. The concrete candidates and their order are written to disk with the chain cover id BEFORE any certify-fold quantity is touched; certification verifies the cover it tests against that file and refuses on mismatch.",
+  "chains": {
+   "M": 2,
+   "rule": "one chain per acquisition; the chain is the lambda ladder ordered 1.0 -> 0.0",
+   "delta": 0.1,
+   "delta_m": 0.05,
+   "allocation": "uniform (delta/M); no DeltaPlan",
+   "note": "M = 2 is a property of THIS design (equal allocation, delta = 0.10, worst required p ~ 0.0150 on the registered lambda front): 0.10/6 = 0.0167 > 0.0150 while 0.10/7 = 0.0143 < 0.0150, so M_max = 6 for a registered equal-allocation design. ACE-LTT itself does not forbid M > 6; a non-uniform registered DeltaPlan is permitted by the specification and is deliberately NOT used here. The multiplicity price is paid over 2 chains, not over 12 candidates."
+  },
+  "losses": [
+   {
+    "name": "fire",
+    "alpha": 0.05,
+    "catch_set": "response",
+    "aggregation": "unit_mean_over_events",
+    "weighting": "uniform",
+    "empty_denominator": "exclude_unit",
+    "lemma": "ACE-LTT spec v2.2 Sec. 4.3 Lemma, event-miss instance (2026-09-23)"
+   },
+   {
+    "name": "smoke",
+    "alpha": 0.05,
+    "catch_set": "response",
+    "aggregation": "unit_mean_over_events",
+    "weighting": "uniform",
+    "empty_denominator": "exclude_unit",
+    "lemma": "ACE-LTT spec v2.2 Sec. 4.3 Lemma, event-miss instance (2026-09-23)"
+   }
+  ],
+  "catch_set_audit": "catch_set = response was established from the code, not chosen: on positive frames policy.decide counts d in {1, 2, 4} as caught (hand-off included), i.e. {s >= t_high} u {escalated and g_v >= b}, governed by b. Numerically, the event-miss grid is exactly constant along the A axis (max |miss(A) - miss(A_0)| = 0.0) and varies along b. For the machine-only family handoff=False forces b = A, where response and alarm coincide; response is the general statement.",
+  "diagnostic_only": {
+   "stratum_risks": "fire|S and smoke|S are NOT constrained: the certifiability replay gives 4 and 17 positive dev units against n_min = 149 required for P(certify >= n_min) >= 0.9. Constraining them would make every candidate NOT CERTIFIED under clause C3. They are reported with their audit counts, and that refusal is the fail-closed demonstration, not a failure of the run.",
+   "payload": "C_U (KiB per evaluated frame) and its distribution are REPORTED; no payload loss enters the constrained family and no B0 is fitted. There is no B0 from an independent deployment source yet; choosing one from the observed payload would contradict ACE's own admissibility principle. Before the sealed test, (B0, beta, unit, normalization) are preregistered separately once an uplink requirement exists, and payload then becomes a confirmatory constraint.",
+   "handoff_variant": "the +human family (b < A, operator counted as a catch) is reported as a diagnostic, not as a second constrained family, because it would double M for a descriptive comparison."
+  },
+  "alpha": 0.05,
+  "delta": 0.1,
+  "unit": "split_group (global dedup component)",
+  "target": "event",
+  "split": {
+   "rule": "select/certify split of the dev units, select_fraction from protocol.yaml",
+   "seed": 20260923,
+   "reproduction": "numpy.random.default_rng(seed).choice(sorted unique units, max(1, round(select_fraction * n_units)), replace=False) = select; rest = certify (identical to cascade.select.calibrate); the run MUST use cascade.ace_register.certify_mask so there is one implementation",
+   "no_dev_holdout": "ALL dev units are used as the calibration set of this dry run; there is no held-out dev half. Consequence, consistent with the utility caveat: the FA and calls of the chosen operating point are selection-side quantities, and final performance is measured once on the sealed test.",
+   "relation_to_the_certifiability_replay": "The registered dev probe reported ~573 fire and ~526 smoke certify units, this registration ~1138 and ~1079. These are different objects, not a contradiction: the probe REPLAYS the deployment pipeline, where dev is first halved into calibration/test and the select/certify split happens inside the calibration half (0.5 x 0.7 = 0.35 of the positive units), while this dry run calibrates on all dev units (0.7). The ratio is 1138/573 = 1.99 = 1/0.5. The n_min = 149 figure belongs to the replayed pipeline and is what governs the sealed-test path; the audit here is against n_min(0.05, delta_m = 0.05) = 59, which both risks clear by more than an order of magnitude."
+  },
+  "audit_membership": "per constrained risk, sha256 of the newline-joined sorted certify unit ids that carry a positive of that risk; one value per risk, identical for every acquisition by construction, frozen in this registration and re-checked by the run",
+  "utility": {
+   "calls": 1.0,
+   "fa": 10.0,
+   "caveat": "the operating point is chosen by minimising this utility INSIDE the certified set, which does not weaken the risk guarantee - the policy is already in the simultaneously certified set. But the FA and calls values used for that choice are measured on the certify fold and are therefore NOT an unbiased final performance estimate; they are reported as selection-side quantities. Final FA/calls performance is measured once on the sealed test."
+  },
+  "outcome_rule": "The study reports what the single procedure returns: the certified set, the chosen operating point, the chain certificates, and every NOT CERTIFIED clause that fired. No candidate is added, removed or re-ordered after the certify fold is touched. An empty certified set is a reportable outcome, not a reason to change the family.",
+  "framing": "The veto regime selected by ACE lowers the risk associated with the earlier fixed-view failure mode; the previously registered view_rule outcome stands unchanged. ACE is a new registered study, not a retroactive correction.",
+  "predecessors": [
+   "acquisition_ladder (2026-09-23T03:27:11Z)",
+   "view_rule amendment"
+  ]
+ },
+ "preconditions": {
+  "P1_events_spanning_units": {},
+  "P2_chains": {
+   "M": 2,
+   "declared_M": 2,
+   "delta_m": [
+    0.05,
+    0.05
+   ],
+   "declared_delta_m": 0.05,
+   "cover_id": "030f725011a36785cdca2b69b755d6b25248a024e0f45d6bbc631038bdc5c0e6",
+   "chains": [
+    [
+     "crop|lambda=1",
+     "crop|lambda=0.8",
+     "crop|lambda=0.6",
+     "crop|lambda=0.4",
+     "crop|lambda=0.2",
+     "crop|lambda=0"
+    ],
+    [
+     "overlay|lambda=1",
+     "overlay|lambda=0.8",
+     "overlay|lambda=0.6",
+     "overlay|lambda=0.4",
+     "overlay|lambda=0.2",
+     "overlay|lambda=0"
+    ]
+   ]
+  },
+  "P5_audit_membership": {
+   "fire": {
+    "n_units": 1138,
+    "sha256": "d7b2a8e57f8995172e42d55e7a9971f096de0e9f0aecd31dd9f075cc4b072040"
+   },
+   "smoke": {
+    "n_units": 1079,
+    "sha256": "bc7dd9434cf52a1acbd3032e65cc25188ad8f43beaac230ec3819f6d890bf65d"
+   }
+  },
+  "P5_split": {
+   "n_dev_frames": 13937,
+   "n_dev_units": 5989,
+   "n_certify_frames": 10510,
+   "n_certify_units": 4192,
+   "n_select_units": 1797,
+   "select_fraction": 0.3,
+   "seed": 20260923
+  },
+  "P3_checklist": [
+   {
+    "item": "loss_by_loss_monotonicity",
+    "ok": true,
+    "detail": "fire: catch_set=response, agg=unit_mean_over_events, w=uniform, empty=exclude_unit, lemma=ACE-LTT spec v2.2 Sec. 4.3 Lemma, event-miss instance (2026-09-23); smoke: catch_set=response, agg=unit_mean_over_events, w=uniform, empty=exclude_unit, lemma=ACE-LTT spec v2.2 Sec. 4.3 Lemma, event-miss instance (2026-09-23)"
+   },
+   {
+    "item": "deterministic_chain_cover",
+    "ok": true,
+    "detail": "dilworth_min_cover_kuhn/v1+greedy_above_400: M=2, permutation-invariant=True, id=030f725011a36785"
+   },
+   {
+    "item": "predeclared_delta_plan",
+    "ok": true,
+    "detail": "uniform: M=2, delta_m = delta/M (delta=0.10 -> 0.0500)"
+   },
+   {
+    "item": "policy_independent_audit_membership",
+    "ok": true,
+    "detail": "count and membership identical across the whole family"
+   },
+   {
+    "item": "fixed_payload_semantics",
+    "ok": true,
+    "detail": "no payload risk in the constrained family"
+   },
+   {
+    "item": "weights_hash_populated",
+    "ok": true,
+    "detail": "detector.weights_sha256 = b4dd9d7edf515401..."
+   }
+  ],
+  "P4_runtime_tree": {
+   "ok": true,
+   "extra": [],
+   "missing": [],
+   "changed": []
+  }
+ },
+ "checklist_items": [
+  "loss_by_loss_monotonicity",
+  "deterministic_chain_cover",
+  "predeclared_delta_plan",
+  "policy_independent_audit_membership",
+  "fixed_payload_semantics",
+  "weights_hash_populated"
+ ],
+ "protocol_sha256": "a7a654d672a0a0d251e8da39082d4d7c6b41743912a3b782028c8baa686fe3ea",
+ "splits_sha256": "362d8689b193d61b3f97ff08ea1acd1a0956824cbbea3544f96921940994d27f",
+ "analysis_code_sha256": "db3c5a7600c7d9c82a13a7f5733909bd760136a614fbdf4f380725ac7fe582d1",
+ "det_sha256": "82997578e96f7ebe556c2e9f29bfecac27faa9db5761bce79636d3529af30d94",
+ "agent_sha256": {
+  "crop": "137638bde4e8b79e8007d9ff7b2b0187de294548d9d3d6c9e5c31dfb92f5264a",
+  "overlay": "3a36f69397478122ef66b18bb3acf44eb774cc8ff101abd3ceab0ea81caf3908"
+ },
+ "note": "ACE-LTT dev study; spec v2.2; protocol a7a654d6; code db3c5a76; predecessors acquisition_ladder 2026-09-23T03:27:11Z, view_rule"
+}

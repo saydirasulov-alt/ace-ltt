@@ -1,0 +1,15 @@
+{
+  "title": "ACE-LTT reproducibility package: Fail-Closed Certification of Multi-Stage AI Policies",
+  "upload_type": "software",
+  "description": "Frozen code, preregistrations, registration and audit receipts, run records and archived detector and verifier outputs for the manuscript \"Fail-Closed Certification of Multi-Stage AI Policies\" (ACE-LTT, Admissible Cascade Envelope via Learn-then-Test). Rows of the sealed test set, ground-truth labels, images and model weights are not included; see README.md. Every file is listed with its SHA-256 in SHA256SUMS. Code: Apache-2.0; all other files: CC BY 4.0.",
+  "creators": [
+    {"name": "Saydirasulov, Norkobil", "affiliation": "Gachon University", "orcid": "0009-0009-3883-9403"},
+    {"name": "Cho, Young-Im", "affiliation": "Gachon University", "orcid": "0000-0003-0184-7599"},
+    {"name": "Davronbekov, Dilmurod Abdujalilovich", "affiliation": "Tashkent University of Information Technologies", "orcid": "0000-0003-1193-7918"},
+    {"name": "Nazarov, Baxodir Abdusamatovich", "affiliation": "Samarkand State University named after Sharof Rashidov"},
+    {"name": "Mukhamadiyev, Abdinabi", "affiliation": "Samarkand State Pedagogical Institute", "orcid": "0000-0002-1438-0628"}
+  ],
+  "license": "Apache-2.0",
+  "keywords": ["multi-stage AI", "certification", "fail-closed assurance", "distribution-free risk control", "multiple testing", "Learn-then-Test", "reproducibility"],
+  "language": "eng"
+}

@@ -1,0 +1,15 @@
+{
+ "records_sha256": "bdab12e2b498de6fb1437529f3c9f60be87a609949d678230f57fe94b57f8e80",
+ "n_rows": 42610,
+ "unsealed": false,
+ "protocol": "/home/ramsey5080/Norqobil/runs/cascade/protocol",
+ "lock_sha256": null,
+ "s_min": 0.02,
+ "det_csv": "/home/ramsey5080/Norqobil/runs/cascade/det_yolo26-base_s0_nms-none.csv",
+ "det_meta_sha256": "f11964f655ae32a12e7b5ac9e5de1a5c8064dbcb1f3eb406b7bfdf6a03bc9533",
+ "det_csv_sha256": "82997578e96f7ebe556c2e9f29bfecac27faa9db5761bce79636d3529af30d94",
+ "agent_csv_sha256": "137638bde4e8b79e8007d9ff7b2b0187de294548d9d3d6c9e5c31dfb92f5264a",
+ "agent_plain_csv_sha256": null,
+ "agent_csv": "/home/ramsey5080/Norqobil/runs/cascade/agent_Qwen2.5-VL-3B-Instruct-none-crop_yolo26-base_s0_nms-none.csv",
+ "agent_meta_sha256": "9408fa4678eb59fb83fd70bd8b31bafe46d5ba68bb4568052fc826b3a5910a81"
+}

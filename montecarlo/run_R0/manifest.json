@@ -1,0 +1,31 @@
+{
+ "R0_sha256": "a8e0b6fca234f043d7ead1e4a6f7d00b605a455888c1101cf504274c6271cedd",
+ "engine_sha256": "ca93d2f3e4eafa85255f512318c0e7a350d259640518696ddbfed23e93960241",
+ "generator_json_sha256": "0f0ed400138b15a28b3408b323e7964f420d698dddb1fc3d5b5e5284cc902ab8",
+ "harness_sha256": "3c091eb22370232a50d85353dc06989685c6d9370edc719889372c530f0399df",
+ "workers": 24,
+ "mcC_reps": 5000,
+ "pilot_record": {
+  "P": 24,
+  "written_before_pilot": "2026-10-01T08:57:48+0900",
+  "tbar_s": {
+   "1": 0.001907247630879283,
+   "2": 0.0067914382088929415,
+   "3": 0.022723848884925246
+  },
+  "T_hat_s": 329.93661460932344,
+  "limit_s": 259200.0,
+  "mcC_reps": 5000,
+  "python": "3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 15:12:24) [GCC 11.2.0]",
+  "numpy": "1.26.4",
+  "scipy": "1.13.1",
+  "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31"
+ },
+ "master_seed": 20261001,
+ "start": "2026-10-01T08:58:38+0900",
+ "python": "3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 15:12:24) [GCC 11.2.0]",
+ "numpy": "1.26.4",
+ "scipy": "1.13.1",
+ "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+ "end": "2026-10-01T09:08:17+0900"
+}

@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this package, please cite it as below."
+title: "ACE-LTT reproducibility package: Fail-Closed Certification of Multi-Stage AI Policies"
+version: "1.0.0"
+date-released: "2026-10-05"
+license:
+  - Apache-2.0
+  - CC-BY-4.0
+authors:
+  - family-names: Saydirasulov
+    given-names: Norkobil
+    orcid: "https://orcid.org/0009-0009-3883-9403"
+    affiliation: "Gachon University"
+  - family-names: Cho
+    given-names: Young-Im
+    orcid: "https://orcid.org/0000-0003-0184-7599"
+    affiliation: "Gachon University"
+  - family-names: Davronbekov
+    given-names: Dilmurod Abdujalilovich
+    orcid: "https://orcid.org/0000-0003-1193-7918"
+    affiliation: "Tashkent University of Information Technologies"
+  - family-names: Nazarov
+    given-names: Baxodir Abdusamatovich
+    affiliation: "Samarkand State University named after Sharof Rashidov"
+  - family-names: Mukhamadiyev
+    given-names: Abdinabi
+    orcid: "https://orcid.org/0000-0002-1438-0628"
+    affiliation: "Samarkand State Pedagogical Institute"
+keywords:
+  - multi-stage AI
+  - certification
+  - fail-closed assurance
+  - distribution-free risk control
+  - multiple testing
+  - Learn-then-Test

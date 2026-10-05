@@ -1,0 +1,121 @@
+{
+ "kind": "paired post-registration diagnostic; descriptive only, no p-value, no decision rule",
+ "utc": "2026-09-24T04:39:55Z",
+ "registration": {
+  "utc": "2026-09-24T04:29:18Z",
+  "sha256": "09f0cee464a554b9307711c5b2fa2c68a5c5af426df82a3ef4679eaf305e1946",
+  "study": "ace_ltt_study2_bladder",
+  "spec_version": "v2.3"
+ },
+ "run_utc": "2026-09-24T04:29:21Z",
+ "policy": {
+  "acq": "overlay",
+  "t_low": 0.2012,
+  "t_high": 0.3601,
+  "b": 0.25,
+  "A": 0.25,
+  "veto": {
+   "S": 0.4,
+   "rest": 0.0
+  },
+  "B0": Infinity,
+  "name": "overlay|b=0.25"
+ },
+ "thresholds": {
+  "t_low": 0.2012,
+  "t_high": 0.3601,
+  "b": 0.25,
+  "A": 0.25,
+  "lambda_S": 0.4,
+  "edge_only": "same (t_high); t_low collapsed to t_high so nothing escalates"
+ },
+ "certify_units": 4192,
+ "risks": {
+  "fire": {
+   "cascade": {
+    "risk_unit_averaged": 0.022207195558308974,
+    "n_units": 1141,
+    "events_missed": 109,
+    "events_total": 2626,
+    "event_miss_unweighted": 0.04150799695354151
+   },
+   "edge_only": {
+    "risk_unit_averaged": 0.045031398240761134,
+    "n_units": 1141,
+    "events_missed": 168,
+    "events_total": 2626,
+    "event_miss_unweighted": 0.06397562833206398
+   },
+   "difference_unit_averaged": -0.02282420268245216
+  },
+  "smoke": {
+   "cascade": {
+    "risk_unit_averaged": 0.01796443310402096,
+    "n_units": 1043,
+    "events_missed": 56,
+    "events_total": 3330,
+    "event_miss_unweighted": 0.016816816816816817
+   },
+   "edge_only": {
+    "risk_unit_averaged": 0.04161774759758134,
+    "n_units": 1043,
+    "events_missed": 127,
+    "events_total": 3330,
+    "event_miss_unweighted": 0.038138138138138135
+   },
+   "difference_unit_averaged": -0.023653314493560382
+  }
+ },
+ "frames": {
+  "cascade": {
+   "fa_numerator": 287,
+   "fa_denominator": 3891,
+   "fa": 0.07375995887946543,
+   "calls_numerator": 789,
+   "calls_denominator": 11037,
+   "calls": 0.07148681706985593,
+   "handoff_numerator": 0,
+   "handoff": 0.0
+  },
+  "edge_only": {
+   "fa_numerator": 171,
+   "fa_denominator": 3891,
+   "fa": 0.04394757131842714,
+   "calls_numerator": 0,
+   "calls_denominator": 11037,
+   "calls": 0.0,
+   "handoff_numerator": 0,
+   "handoff": 0.0
+  },
+  "difference_fa": 0.029812387561038295,
+  "difference_calls": 0.07148681706985593,
+  "difference_handoff": 0.0
+ },
+ "paired_unit_differences": {
+  "fire": {
+   "mean": -0.02282420268245216,
+   "interval": [
+    -0.03009565932236784,
+    -0.01584188010106787
+   ],
+   "n_units": 1141,
+   "n_units_worse_under_cascade": 0,
+   "n_units_better_under_cascade": 31,
+   "reps": 5000,
+   "kind": "descriptive cluster bootstrap, 90% percentile interval, POST-SELECTION"
+  },
+  "smoke": {
+   "mean": -0.02365331449356038,
+   "interval": [
+    -0.031778565126465805,
+    -0.016314312145521735
+   ],
+   "n_units": 1043,
+   "n_units_worse_under_cascade": 0,
+   "n_units_better_under_cascade": 31,
+   "reps": 5000,
+   "kind": "descriptive cluster bootstrap, 90% percentile interval, POST-SELECTION"
+  }
+ },
+ "context_not_the_comparison": "the registered dev probe measured edge_LTT at FA 0.0505 with zero calls, on a different fold and different thresholds; the same-threshold edge-only column here is the comparison"
+}
