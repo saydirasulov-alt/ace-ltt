@@ -1,4 +1,4 @@
-# ACE-LTT on a generic synthetic instance (2026-09-24T06:49:25Z)
+# ACE-LTT on a generic synthetic instance (2026-10-07T04:34:07Z)
 
 **Illustration, not evidence.** The generator is declared and seeded; its constants were chosen so that the instance exhibits a truncating chain, a non-truncating chain and the refusal paths. No number here is a measurement of any real system.
 
@@ -7,6 +7,8 @@ generator seed 20260925, 900 units, 5392 frames; band (0.2, 0.36), A = 0.55, b l
 alpha = 0.05, beta = 0.05, delta = 0.1; M = 2, delta_m = 0.05, n_min = 59; cover `c5eae7965d30c72977afbb74eaf1c21c433d224ed4b5b8ee8fc778b8492e3465`
 
 audit population: 415 miss units, 630 budget units, membership `388adb8c929aa5c8...` (identical for all 8 candidates)
+
+C4, discharged statically: every escalated frame of mode `a` transmits exactly 22 KiB (`a1`), 41 KiB (`a2`) by construction, against the declared transport cap B_max = 48 KiB. As a non-certifying diagnostic, the design-fold empirical maximum of C_u is 17.6 (`a1`), 32.8 (`a2`) KiB - a sample statement, never the cap. Note that it lies strictly BELOW the construction bound: the design fold never observed the worst case, which is exactly why a sample maximum cannot discharge a forall-x cap.
 
 ## 1 Family design, select fold only
 
@@ -26,7 +28,7 @@ audit population: 415 miss units, 630 budget units, membership `388adb8c929aa5c8
 | `a1` | 0.09357 | 0.01505 | 0.00000 | MARGIN_CAPABLE | BOUNDARY_SPANNING | +0.00335 / -0.00152 |
 | `a2` | 0.09357 | 0.01505 | 0.00000 | MARGIN_CAPABLE | BOUNDARY_SPANNING | +0.00335 / -0.02491 |
 
-pre-freeze checklist: **8/8**
+pre-freeze checklist: **9/9**
 
 | item | ok |
 |---|---|
@@ -38,6 +40,7 @@ pre-freeze checklist: **8/8**
 | weights_hash_populated | yes |
 | chain_margin_capacity | yes |
 | chain_boundary_spanning | yes |
+| inference_contract_executable | yes |
 
 ## 2 Certification, certify fold
 
@@ -92,6 +95,7 @@ The strict front is not merely less efficient here: it returns the empty certifi
 | C3 audit support | declared 12 units < n_min 59 -> ['C3_CERTIFIABILITY_AUDIT', 'NO_REJECTION'], 0 certified |
 | C6 no monotonicity lemma | chain sizes [4, 4] -> [1, 1, 1, 1, 1, 1, 1, 1] |
 | C7 payload semantics | ['C7_FROZEN_PAYLOAD_SEMANTICS', 'NO_REJECTION'], 0 certified |
+| contract I registration | stale registry id (registered 58852db0d59492ce...) -> ['I_INFERENCE_REGISTRATION', 'NO_REJECTION'], 0 certified |
 
 without a written lemma every candidate is its own chain: M rises from 2 to 8, delta_m falls from 0.05 to 0.0125, and no fail-safe path exists
 

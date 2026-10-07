@@ -1,0 +1,94 @@
+# FireSmoke-Clean cascade protocol. Edit BEFORE `freeze`; never after.
+version: 3
+created_utc: "2026-09-21T07:50:50+00:00"
+dataset: "/home/ramsey5080/Norqobil/lha-yolo26/datasets/FireSmoke-Clean_v0.2"
+manifest_sha256: "a05e06d5accdb68ca6db4e4d78feac3f760d3150eda3e6e97122e3ddfee5b6de"
+split_seed: 20260921
+calibration_fraction_of_test_units: 0.5
+event_gap_minutes: 30.0    # used at init to define Pyro-SDIS events (frozen in splits.csv)
+# unit = split_group = GLOBAL connected component of the fsclean dedup graph over ALL sources; cross-source
+# verified near-duplicate clusters (e.g. D-Fire pictures inside FASDD_CV) are deliberately ONE unit.
+# Test groups are stratified by their primary source (most frames), each group drawn once.
+min_test_units_per_source: 5   # sources with fewer test units go to external_shift (no guarantee)
+sources_moved_to_external: ["flame2_det"]
+
+# ---- guarantee ---------------------------------------------------------------------------------
+# LTT statement: over the draw of the calibration data, P(a configuration whose TRUE risk exceeds alpha
+# is certified) <= delta, provided calibration and future units are exchangeable.
+alpha: 0.05
+delta: 0.10
+target: event               # 'event' = cluster-averaged event miss risk ('frame' = positive-frame miss)
+risks: [y_fire, y_smoke]    # joint: certified only if every risk passes (p = max of HB p-values)
+unit: split_group           # exchangeable unit (camera / video / near-duplicate group)
+fwer: pareto                # pareto (select / certify split) or bonferroni (data-independent grid)
+select_fraction: 0.3        # share of calibration units used for grid + Pareto order
+calibrate_seed: 1           # seed of the select / certify split inside calibration
+grid: null                  # optional pre-registered grid from dev: {s_edges: [...], g_edges: [...]}
+costs: {calls: 1.0, handoff: 5.0, fa: 20.0}
+s_min: 0.02                 # frames below this edge score are never escalated (agent must use the same)
+payload: frame              # uplink accounting: frame | crop
+bootstrap_reps: 5000        # final: cluster (unit) bootstrap for the sealed-test risk CIs
+fixed_baselines:            # uncalibrated baselines (thresholds fixed a priori, not tuned)
+  edge_threshold: 0.25
+  cascade_t_low: 0.10
+  cascade_t_high: 0.60
+  agent_threshold: 0.50
+all_frames_cloud_overlay: false   # agent (overlay view, detector boxes drawn) run on EVERY frame (--s-min 0)
+pure_cloud_baseline: false        # separate plain-view agent run on every frame (detector-independent);
+                                  # needs --agent-plain at freeze / records
+human_tier_assumption: "hand-off frames are resolved correctly by the operator"
+ravc: {byte_cost: 2.0e-5}   # RAVC dev study: 50 KB uplink = 1 objective unit (= 1 cloud call)
+figures:
+  main: [fig1_architecture, fig2_dataset_audit, fig3_risk_cost, fig4_forest, fig6_by_source]
+  supplement: [fig5_edge_cloud_cost, fig7_head_selection]
+  risk_max: 0.36
+  uplink_kb_max: 50.0
+  latency_ms_max: 100.0
+               # null = cascade/figure_style.py DEFAULT_SPEC (code-hashed): method order, axis limits,
+                            # main / supplement split. A dict here overrides it and is locked by freeze.
+
+# ---- deployment path (the guarantee holds only for exactly this configuration) -----------------
+detector:
+  weights_sha256: "b4dd9d7edf515401524af23d40c392bfbc600bf005c1188c5453909e4d640230"        # filled by freeze from the detector .meta.json
+  ultralytics: "8.4.153"
+  nms: "none"              # "false" = YOLO26 one-to-one NMS-free head; "none"/"true" = one-to-many + NMS
+  imgsz: 640
+  conf: 0.001
+  iou: 0.7
+  max_det: 100
+  precision: fp32
+agent:
+  model: "Qwen/Qwen2.5-VL-3B-Instruct"
+  revision: ""              # filled by freeze from the agent .meta.json
+  quant: none
+  view: overlay
+  max_side: 640
+  prompt_sha256: ""         # filled by freeze from the agent .meta.json
+
+# ---- pre-registered comparisons ----------------------------------------------------------------
+primary_method: cascade_LTT
+baselines: [edge_fixed, edge_LTT, edge_LTT_image, detector_gated_agent, cascade_fixed,
+            cascade_LTT_image, cascade_LTT_bonf, cascade_LTT+human]
+head_rule: |
+  Dev only, deterministic (implemented in cascade.head_report): a head is eligible if its fire-event AND
+  smoke-event candidate recall at s_min are each within 1.0 percentage point of the best head on that class.
+  Among eligible heads: lowest negative-frame escalation share; heads within 1.0 pp of that minimum are
+  compared by higher dev mAP50; within 0.5 pp mAP50, by lower detector latency; remaining tie -> nms "false".
+  If no head is eligible, choose the head with the largest min(fire recall, smoke recall).
+dev_decisions: |
+  Chosen on dev only: detector head (head_rule), VLM (3B vs 7B-4bit), view (overlay vs crop), costs,
+  optional grid. Order of work: protocol -> heads -> scores -> dev -> freeze -> records -> validity -> final.
+  validity runs only after freeze and changes nothing.
+prior_exposure: |
+  Before freezing: the detector's overall test mAP (YOLO26n base s0: mAP50 0.731) was computed, and a
+  300-frame smoke test with a colour-heuristic agent was run on a val+test mixture (v1 code, before roles
+  existed). Neither was used for any cascade design choice. No calibration/sealed positive counts were shown.
+view_rule: |
+  Registered 2026-09-21T09:02:42+00:00, before any crop / 7B dev result was seen. Dev only; costs 1/5/20; payload frame.
+  1. A view is eligible if cascade_LTT has pooled dev risk_p97.5 <= 0.05 AND Pyro-SDIS dev risk_mean <= 0.05.
+  2. Exactly one eligible -> that view.
+  3. Both eligible -> lower fa_mean; if |fa difference| < 0.5 pp -> overlay.
+  4. None eligible -> no view chosen; run Qwen2.5-VL-7B-4bit + overlay and apply 1.
+  5. 7B also not eligible -> edge_LTT is the primary method; the VLM cascade is reported as an ablation / negative result.
+  Deployment payload if crop is chosen is decided before freeze: crop made on the edge -> payload: crop; full frame
+  sent and cropped in the cloud -> payload: frame.

@@ -1,3 +1,8 @@
 ACE-LTT reproducibility package
 Copyright 2026 Norkobil Saydirasulov, Young-Im Cho, D. A. Davronbekov, B. A. Nazarov, Abdinabi Mukhamadiyev
-Licensed under the Apache License, Version 2.0 (code) and CC BY 4.0 (all other files); see README.md.
+
+Author-created source code is licensed under the Apache License, Version 2.0.
+Author-created registrations, preregistrations, run records, documentation and derived numerical outputs are
+licensed under CC BY 4.0 where the authors hold the necessary rights. Third-party datasets, model weights,
+source images/labels and third-party-derived metadata or identifiers remain subject to their original terms
+and are not relicensed by this repository. See README.md and LICENSE_SCOPE.md.

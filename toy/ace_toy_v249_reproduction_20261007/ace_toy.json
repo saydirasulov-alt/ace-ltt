@@ -1,6 +1,7 @@
 {
- "utc": "2026-09-24T06:49:25Z",
+ "utc": "2026-10-07T04:34:07Z",
  "kind": "generic synthetic illustration of ACE-LTT; not an empirical result",
+ "spec_version": "v2.4.3",
  "registration": "ace_ltt_toy_generic/v1",
  "generator": {
   "n_units": 900,
@@ -45,6 +46,7 @@
    "a1": 22.0,
    "a2": 41.0
   },
+  "b_max_kib": 48.0,
   "band": [
    0.2,
    0.36
@@ -72,7 +74,17 @@
   "audit": {
    "n_miss_units": 415,
    "n_budget_units": 630,
-   "membership_sha256": "388adb8c929aa5c8a5886dc7dbb8356c29c558b5fc96f504decdc21f5b0c3add"
+   "membership_sha256": "388adb8c929aa5c8a5886dc7dbb8356c29c558b5fc96f504decdc21f5b0c3add",
+   "C4_static_bound_kib": {
+    "a1": 22.0,
+    "a2": 41.0
+   },
+   "C4_declared_transport_cap_kib": 48.0,
+   "design_fold_empirical_max_C_u": {
+    "a1": 17.6,
+    "a2": 32.8
+   },
+   "C4_note": "the cap is the construction bound; the design-fold maximum is a diagnostic"
   },
   "n_min": 59,
   "r_star": {
@@ -240,7 +252,7 @@
    {
     "item": "weights_hash_populated",
     "ok": true,
-    "detail": "detector.weights_sha256 = 5db95875f1a547d7..."
+    "detail": "detector.weights_sha256 = 541359f3ce2906cb..."
    },
    {
     "item": "chain_margin_capacity",
@@ -251,6 +263,11 @@
     "item": "chain_boundary_spanning",
     "ok": true,
     "detail": "a1: BOUNDARY_SPANNING (max +0.0034, min -0.0015, safe endpoint feasible=True); a2: BOUNDARY_SPANNING (max +0.0034, min -0.0249, safe endpoint feasible=True)"
+   },
+   {
+    "item": "inference_contract_executable",
+    "ok": true,
+    "detail": "registration=ace_ltt_toy_generic/v1, registry_id=58852db0d59492ce..., miss -> hb_unweighted_unit_mean [v1, w=uniform, chain_compatible=True]; budget -> hb_unweighted_unit_mean [v1, w=uniform, chain_compatible=True]"
    }
   ],
   "certify": [
@@ -297,7 +314,7 @@
     "payload_certify": 0.0,
     "p_joint": 0.062047028801674294,
     "certified": false,
-    "utility": 1.2587707760792466,
+    "utility": 1.2587707760792464,
     "fa": 0.08403026682596575,
     "calls": 0.2572724846543902,
     "handoff": 0.04029890579129971
@@ -345,7 +362,7 @@
     "payload_certify": 0.023809523809523808,
     "p_joint": null,
     "certified": false,
-    "utility": 1.2395165036848277,
+    "utility": 1.2395165036848275,
     "fa": 0.07964954201513341,
     "calls": 0.2572724846543902,
     "handoff": 0.04643714971977582
@@ -1138,6 +1155,14 @@
     "NO_REJECTION"
    ],
    "certified": 0
+  },
+  "I_inference_registration": {
+   "reasons": [
+    "I_INFERENCE_REGISTRATION",
+    "NO_REJECTION"
+   ],
+   "certified": 0,
+   "registered_registry_id": "58852db0d59492ce..."
   }
  },
  "diagnostics": {
