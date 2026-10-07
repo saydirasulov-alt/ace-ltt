@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this package, please cite it as below."
 title: "ACE-LTT reproducibility package: Fail-Closed Certification of Multi-Stage AI Policies"
 version: "1.0.0"
-date-released: "2026-10-05"
+date-released: "2026-10-07"
 license:
   - Apache-2.0
   - CC-BY-4.0
