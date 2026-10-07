@@ -18,7 +18,7 @@ reviewed at deposition time; this release relies on `CITATION.cff` rather than a
 |---|---|
 | `code/cascade/` | the current frozen `cascade` package used for Study 3 and current method reproductions, with its own `MANIFEST.sha256` (`sha256sum -c MANIFEST.sha256` inside the folder). `ace_ltt.py` is the certification engine. Historical packages pinned by Studies 1 and 2 are provided under `code/historical/`. `README_UZ.md` is the developers' internal note (Uzbek), kept because the manifest covers it. |
 | `code/*.sh` | the Study 3 preparation, registration and one-shot execution scripts |
-| `code/historical/` | the two earlier packages pinned by the Study 1 and Study 2 registrations: `cascade_v2_19.zip` (SHA-256 `335753548a8b4b79??, `analysis_code_sha256` `db3c5a76??, Study 1) and `cascade_v2_3_2.zip` (SHA-256 `8b76f0125476b958??, `analysis_code_sha256` `a7336412??, Study 2). A historical certificate verifies only against the package its registration pins. |
+| `code/historical/` | the two earlier packages pinned by the Study 1 and Study 2 registrations: `cascade_v2_19.zip` (SHA-256 `335753548a8b4b79…`, `analysis_code_sha256` `db3c5a76…`, Study 1) and `cascade_v2_3_2.zip` (SHA-256 `8b76f0125476b958…`, `analysis_code_sha256` `a7336412…`, Study 2). A historical certificate verifies only against the package its registration pins. |
 | `preregistrations/` | Monte Carlo preregistration R0; Study 3 preregistration R0 as frozen, and the same file with its dated post-run addendum of 28 September 2026 (the frozen text is a byte-prefix of the addended file) |
 | `montecarlo/` | generator parameters, the harness, the complete run `run_R0/` (blocks MC-A to MC-D, summary, pilot record, MC-D witness) and the results report `ACE_MC_results_R0.md` |
 | `protocol_v249/` | the protocol instance used by Study 3: `protocol.yaml`, `splits.csv` (unit roles; no labels), `protocol.lock` |
@@ -71,10 +71,10 @@ Every release file except `SHA256SUMS` itself is listed in `SHA256SUMS` (check w
 
 From `code/`: `python -m cascade.test_ace_ltt` and `python -m cascade.test_ace3` run the engine and Study 3
 test suites (both pass; tested with Python 3.10, NumPy 2.2, SciPy 1.15 and PyYAML 6, and on the authors' server with Python 3.12); `python -m cascade.ace_toy`
-reproduces the synthetic instance. `analysis_code_sha256` of the shipped tree recomputes to `aa461f6b??
-(`cascade.make_protocol.analysis_code()`); the two historical packages recompute to `db3c5a76?? and
-`a7336412??, the values pinned in the Study 1 and Study 2 registrations. Re-executing a study additionally
-needs the protocol state the registration pins (Studies 1??: `protocol_studies1-2/`; Study 3: `protocol_v249/`, both included); the complete score
+reproduces the synthetic instance. `analysis_code_sha256` of the shipped tree recomputes to `aa461f6b…`
+(`cascade.make_protocol.analysis_code()`); the two historical packages recompute to `db3c5a76…` and
+`a7336412…`, the values pinned in the Study 1 and Study 2 registrations. Re-executing a study additionally
+needs the protocol state the registration pins (Studies 1–2: `protocol_studies1-2/`; Study 3: `protocol_v249/`, both included); the complete score
 files are available from the corresponding author on request.
 
 ## Software
@@ -95,4 +95,4 @@ by this repository. See `LICENSE_SCOPE.md` for the release-wide licence boundari
 ## Contact
 
 Norkobil Saydirasulov, AI and Smart City Laboratory, Department of Computer Engineering, Gachon University,
-Seongnam-si, Republic of Korea ??saydirasulov@gachon.ac.kr
+Seongnam-si, Republic of Korea — saydirasulov@gachon.ac.kr
