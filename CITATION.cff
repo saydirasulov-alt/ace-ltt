@@ -1,11 +1,13 @@
 cff-version: 1.2.0
 message: "If you use this package, please cite it as below."
 title: "ACE-LTT reproducibility package: Fail-Closed Certification of Multi-Stage AI Policies"
-version: "1.0.0"
+version: "1.0.1"
 date-released: "2026-10-07"
-license:
-  - Apache-2.0
-  - CC-BY-4.0
+type: software
+abstract: "Frozen code, preregistrations, registration and audit receipts, run records and archived detector and verifier outputs for the manuscript Fail-Closed Certification of Multi-Stage AI Policies (ACE-LTT). Source code is licensed under Apache-2.0; author-created non-code research artefacts are licensed under CC BY 4.0 where the authors hold the necessary rights (see LICENSE_SCOPE.md)."
+repository-code: "https://github.com/saydirasulov-alt/ace-ltt"
+# Single licence identifier for archive metadata (Zenodo accepts one). Non-code artefacts: CC BY 4.0, see LICENSE_SCOPE.md.
+license: Apache-2.0
 authors:
   - family-names: Saydirasulov
     given-names: Norkobil
