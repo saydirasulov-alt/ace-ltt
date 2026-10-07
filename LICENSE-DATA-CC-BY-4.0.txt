@@ -1,4 +1,7 @@
-Except for the source code (see LICENSE), the contents of this package are licensed under
-the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+Author-created non-code research artefacts in this package (registrations, preregistrations, run records,
+documentation and derived numerical outputs) are licensed under the Creative Commons Attribution 4.0
+International License (CC BY 4.0), where the authors hold the necessary rights. Source code is licensed
+under the Apache License 2.0 (see LICENSE). Third-party datasets, model weights, source images/labels and
+third-party-derived metadata or identifiers are not relicensed; see LICENSE_SCOPE.md.
 Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) 2026 Norkobil Saydirasulov, Young-Im Cho, D. A. Davronbekov, B. A. Nazarov, Abdinabi Mukhamadiyev.
